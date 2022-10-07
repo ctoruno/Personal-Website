@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "https://carlos-toruno.netlify.app/"
 theme = "hugo-apero"
 languageCode = "en"
 title = "Carlos A. Toruño P."
