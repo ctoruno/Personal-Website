@@ -1,7 +1,7 @@
 ---
-author: The R Markdown Team @RStudio
+author: Carlos Alberto Toruño Paniagua
 cascade:
-  author: The R Markdown Team @RStudio
+  author: Carlos Alberto Toruño Paniagua
   show_author_byline: true
   show_comments: false
   show_post_date: true
@@ -11,7 +11,7 @@ cascade:
     text_link_label: View recent talks
     text_link_url: /talk/
 description: |
-  This is a list for your talks, workshops, or other events with a time, date, and place.
+  In this page you will find a list of available resources I have helped developed to help other people I work with.
 layout: list
 show_author_byline: true
 show_button_links: true
@@ -19,10 +19,8 @@ show_post_date: true
 show_post_thumbnail: true
 show_post_time: true
 sidebar:
-  author: The R Markdown Team @RStudio
-  description: "This is a list for your talks, workshops, or \nother events with a
-    time, date, and place. \nEven this sidebar offers a ton of customizations.\n\nCheck
-    out the _index.md file in the /talk folder \nto edit this content. \n"
+  author: Carlos Alberto Toruño Paniagua
+  description: "This is a list available resources I have helped developed to help other people I work with."
   show_sidebar_adunit: false
   text_link_label: Subscribe via RSS
   text_link_url: /talk/index.xml
