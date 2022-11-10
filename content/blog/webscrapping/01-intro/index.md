@@ -1,10 +1,15 @@
 ---
+author: Carlos A. Toruño P.
 date: "2022-11-07"
 draft: false
 excerpt: Web Scraping is a increasingly popular tool to gather information. In this article, I go through the very basics to understand what is it and how does it work.
 subtitle: ""
-title: A very brief introduction to Web Scrapping
 weight: 1
+title: A very brief introduction to Web Scrapping
+subtitle: Basic concepts
+layout: single
+tags:
+- Web Scraping
 ---
 
 # A very brief introduction to Web Scrapping
