@@ -7,9 +7,9 @@ categories:
 date: "2022-10-15"
 draft: false
 excerpt: An online dashboard that shows the results from 
-  webscrapping publicly available data about lawyers 
-  residing in the EU area. A dataset of over 345,000 
-  individuals is available.
+  web scrapping publicly available data about lawyers 
+  residing in the EU area. Data is only available at the location level.
+  No personal data is publish here.
 layout: single-sidebar
 links:
 - icon: door-open
@@ -38,7 +38,7 @@ This dataset is mainly built from webscrapping the publicly available informatio
 
 The dashboard has three main panels: Overview, Country Data and NUTS Data. In the overview tab, the user can see the geographical spreed of data across the continent. In the country data tab, we summarize the main information at the country level. Finally, in the NUTS Data tab, the user can find some summary statistics at the NUTS region level.
 
-Kudos to [Santiago Pardo](https://github.com/aspardog), [Jaehee Lee](https://github.com/jaehee99) and Pablo González for their collaboration in the collection and cleaning of this data. And to Ana María Montoya for her guidance.
+Kudos to [Santiago Pardo](https://github.com/aspardog), [Jaehee Lee](https://github.com/jaehee99) and Pablo González for their collaboration in the collection and cleaning of this data. And to Ana María Montoya for her guidance and giving the very first idea to start this massive task.
 
 
 
