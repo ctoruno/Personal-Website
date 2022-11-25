@@ -2,11 +2,11 @@
 author: Carlos A. Toruño P.
 date: "2022-11-17"
 draft: false
-excerpt: Web Scraping is a increasingly popular tool to gather information. In the second part of this series, I use the requests and BeautifulSoup libraries scrap the information from a website.
+excerpt: Web Scraping is an increasingly popular tool to gather information from the web. In the second part of this series, I use the requests and BeautifulSoup Python libraries to extract information from a website.
 subtitle: ""
 weight: 2
-title: Web Scrapping using requests and Beautiful Soup
-subtitle: Step-by-Step Guide
+title: Web Scrapping using Requests and Beautiful Soup
+subtitle: A step-by-step Guide
 layout: single
 tags:
 - Web Scraping
