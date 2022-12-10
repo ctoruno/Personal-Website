@@ -284,6 +284,12 @@ master_data[0:11]
     .dataframe thead th {
         text-align: right;
     }
+
+    table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
 </style>
 <table border="1" class="dataframe">
   <thead>
@@ -462,3 +468,7 @@ master_data[0:11]
 </div>
 
 
+
+Results look great!!
+
+As you can see requests and BeautifulSoup provide an easy framework to gather information from the web. Sadly, I can't go explaining detail by detail every line of my codings but I hope that the explanation of the general setting will alow you to understand the entirety of the code.
