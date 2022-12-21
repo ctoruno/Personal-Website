@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>selenium</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="03-selenium_files/libs/clipboard/clipboard.min.js"></script>
+<script src="03-selenium_files/libs/quarto-html/quarto.js"></script>
+<script src="03-selenium_files/libs/quarto-html/popper.min.js"></script>
+<script src="03-selenium_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="03-selenium_files/libs/quarto-html/anchor.min.js"></script>
+<link href="03-selenium_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="03-selenium_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="03-selenium_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="03-selenium_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="03-selenium_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+<p>In my <a href="https://www.carlos-toruno.com/blog/webscrapping/02-requests/">previous post</a> about webscrapping with Python, I talked a bit about how to use the <a href="https://requests.readthedocs.io/en/latest/">Requests</a> and <a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup library</a> libraries in order to extract the information from the web and we applied these tools to gather information from the <a href="https://rejestradwokatow.pl/adwokat">Polish National Registry of Lawyers</a>. However, requests might fall short when we have to extract information from dynamically generated content that use internal APIs or JavaScript to display the information. Under this scenario, we need to expand our set of tools in order to overcome these obstacles. One of such alternatives is to use a web driver. Therefore, in this post, I will be explainign how to use a web driver to locate HTML elements in a website and I will use it to extract lawyers information from <a href="https://anwaltauskunft.de/magazin">The German Lawyers’ Association</a>.</p>
+<p><img src="featured.png" width="100%"></p>
+<section id="whats-a-web-driver" class="level2">
+<h2 class="anchored" data-anchor-id="whats-a-web-driver">What’s a web driver?</h2>
+<p>According to the <a href="https://www.w3.org/TR/webdriver/">W3C Advisory Committee</a>:</p>
+<blockquote class="blockquote">
+<p>A WebDriver is a remote control interface that enables introspection and control of user agents. It provides a platform- and language-neutral wire protocol as a way for out-of-process programs to remotely instruct the behavior of web browsers.</p>
+</blockquote>
+<p>In other words, a web driver allows you to remotely control a web browser. Because of this, these tools are mainly use to run local tests when you are developing a website. However, due to its characteristics, it can also be used to perform webscraping because it allows you to control or program the behavior of a web browser through coding. Nowadays, the most popular WebDriver out there is undoubtly the <a href="https://www.selenium.dev/documentation/webdriver/">Selenium Project</a>. For this post, we will be using the <a href="https://selenium-python.readthedocs.io/index.html">Selenium Python Library</a> to extract the information we want. If you want to learn more about WebDrivers and Selenium, I would suggest you to watch the following video:</p>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/unu7R9DU-eU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+</iframe>
+</section>
+<section id="the-problem-at-hand" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-at-hand">The problem at hand</h2>
+<p>As mentioned before, the request library might fall short when dealing with dynamic websites. As we did in the <a href="https://www.carlos-toruno.com/blog/webscrapping/02-requests/">previous exercise</a> with Poland, this time I would like to gather information related to the geographical distribution, the different law specializations and contact information of german lawyers. For this, I will be scraping information from <a href="https://anwaltauskunft.de/anwaltssuche">The German Lawyers’ Association website</a>.</p>
+<p>As we can observe, right from the beginning we get a list of 58,648 lawyers that are listed in 5,865 pages of results that display a summary of 10 lawyers each. Nevertheless, this summary is not enough and we would have to go to the individual pages that contain the full information for each lawyer. To achieve this, we could easily extract the information using the <strong>request</strong> and <strong>BeautifulSoup</strong> libraries to loop across all the pages of result and fetch the URLs of the individual pages. Then, once that we have a list with all 58 thousand links, we could loop across each of these URLs and retrieve all the information we are interested in.</p>
+<p>However, if we take a look at how results are sorted, we can observe that, by default, the lawyers are listed <strong>randomly</strong>. This means that, the order in which lawyers are displayed migh change every time that we request the source code. That being the case, even if we loop through all 5,865 pages of results, we might end up skipping some lawyers because of the randomness in which results are showed and even webscraping the same lawyer several times. Take a look at the following two images for example, both of them show the lawyers that are at the end of page number 25.</p>
+<p><img src="randomness.png" width="100%"></p>
+<p>As we can observe, lawyers are completely different people. In order to get all the information we want, we would need to click on the dropdown list that we have above the list of results and select <strong>Sort Results: Alphabetically</strong> (<em>Ergebnisse sortieren: Zufall</em>). This way, we would ensure that we don’t get duplicates nor that we skip lawyers while looping across the pages of results.</p>
+<p><img src="dropdown.png" width="100%"></p>
+<p>Once that we select the alphabetical sorting in the dropdown list, we can observe that the URL is still <code>https://anwaltauskunft.de/anwaltssuche?page=1</code>, but now, the results are sorted in alphabetical order. This is because the search results are generated dynamically through JavaScript functions. Given that the URL is not altered, the <strong>request</strong> library is of no help in this scenario. We need a tool that allow us to emulate the behavior of a web browser. For this same reason, I will be using <strong>Selenium</strong> for the crawling and, once I have fetched all individual URLs, we can perform the webscraping using the tools we know until now.</p>
+</section>
+<section id="installing-selenium" class="level2">
+<h2 class="anchored" data-anchor-id="installing-selenium">Installing Selenium</h2>
+<p>The first thing that we need to do is to install Selenium for Python. For this, we can install it in our local machone by running the following in our terminal:</p>
+<pre><code>pip install selenium</code></pre>
+<p>… or install it from your anaconda distribution by running the following:</p>
+<pre><code>conda install -c conda-forge selenium</code></pre>
+<p>Once that we have installed Selenium, we need to download the web driver that we will be controlling remotely. In this exercise, I will be using Chromium from Google. We can download the executable from the <a href="https://chromedriver.chromium.org/downloads">Chromium website</a> and, we need to make sure that we download the driver version that matches our web driver. Given that I am using Google Chrome version 108.0.5, I will download the version 108.0.5 of the driver.</p>
+</section>
+<section id="using-selenium-for-crawling" class="level2">
+<h2 class="anchored" data-anchor-id="using-selenium-for-crawling">Using Selenium for crawling</h2>
+<p>First, we will import Selenium and all the related modules:</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium <span class="im">import</span> webdriver</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.support.select <span class="im">import</span> Select</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.support <span class="im">import</span> expected_conditions <span class="im">as</span> EC</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.support.ui <span class="im">import</span> WebDriverWait</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.common.by <span class="im">import</span> By</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Once that we have imported Selenium, we need to set up and load the driver remotely:</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting up a Selenium webdriver</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>options <span class="op">=</span> webdriver.ChromeOptions()</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>options.headless <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>driver <span class="op">=</span> webdriver.Chrome(executable_path <span class="op">=</span> <span class="st">"/Users/carlostorunopaniagua/Documents/GitHub/chromedriver_mac64"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                          options         <span class="op">=</span> options)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Defining a waiting period</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>wait <span class="op">=</span> WebDriverWait(driver, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Three things are worth noticing from the code above:</p>
+<ol type="1">
+<li><p>First, we define a set of options. In this set of options we can define if the driver will run headless or not. A headless browser will run in the background and you would not be able to see the automatization behind. For now, we will set this option as <code>False</code> so we can see what’s going on behind the curtains. As a consequence, once we run the driver, we should see a new window poping-up in our screen.</p></li>
+<li><p>Second, in order to load the driver, we need to define tha path where we saved the executable that we just downloaded.</p></li>
+<li><p>We also define an explicit waiting time. This waiting time will be the maximum amount of seconds that the driver will wait for a web element to load</p></li>
+</ol>
+<p>Once that we have loaded the driver, we can open the website as follows:</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Defining and opening the root website from where we will be extracting the individual links</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>root_url <span class="op">=</span> <span class="st">"https://anwaltauskunft.de/anwaltssuche"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>driver.get(root_url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Once that we have opnened the root website, we need to sort our results alphabetically. To do this we need to locate the dropdown list in the HTML code. If we inspect this element, we would see the following HTML code:</p>
+<p><img src="select_html.png" width="100%"></p>
+<p>As we can observe, the dropdown list is wrapped around a <strong>select tag</strong> and, more importantly, it has an <strong>id</strong> attribute assigned to it, which is <code>ls_sort_sort</code>. We can use this <strong>id</strong> to locate the element in the HTML code and change its selected values. Additionally, if we keep analyzing the HTML code, we can observe that the <strong>select tag</strong> has three children tag which represent the three different options that we can select from the dropdown list: <em>random sorting</em>, <em>alphabetical sorting</em> and <em>lawyers with picture first</em>.</p>
+<p>Keep in mind that what we want to do is to sort the results alphabetically, so, we need to change the selected option from the dropdown list from <em>random</em> to <em>alphabetical</em>. To achieve this, we will be using the <strong>value attribute</strong> of these options, in other words, <em>random</em>, <em>lawyer_name</em> and <em>profile_image</em> in the following fashion:</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Locating dropdown list and saaving the element</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>dropdown  <span class="op">=</span> Select(driver.find_element_by_id(<span class="st">"ls_sort_sort"</span>))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Changing the selected option for this element</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>dropdown.select_by_value(<span class="st">"lawyer_name"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>After running the above code, we should see our results sorted alphabetically in our web driver, meaning that lawyer Sabine Aalbars should be on top of our results.</p>
+<p>Now that we have our results sorted as we want, we need to retrieve the links to the individual pages of each lawyer. To do this, we can retrieve the source code of the current web page. However, keep in mind that we we will need the help of a parsening tool to easily read this source code and, more immportantly, to navigate through it. For this, we can use the BeautifulSoup library as we have done before:</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetching source code</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>content <span class="op">=</span> driver.page_source</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Parcening the retrieved code</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>soup    <span class="op">=</span> BeautifulSoup(content, <span class="st">"lxml"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now that we have the code tidy and organized into our soup, we can now turn into locating the links. If we keep going deeper into the code, we can observe that the links are stored as <strong>href attributes</strong> within some <strong>a tags</strong>:</p>
+<p><img src="links.png" width="100%"></p>
+<p>In order to reach these <strong>a tags</strong>, we can first locate the body where all the lawyers cards are contained. This is the <strong>div tag</strong> that has the class attribute of <em>card-body p-0</em>. And once that we have located this upper level tag, we can loop across all of its children tag, which are ten, the exact number of lawyers in each page. To do this, we proceed as follows:</p>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extracting links</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>card_body <span class="op">=</span> soup.find(<span class="st">"div"</span>, class_ <span class="op">=</span> <span class="st">"card-body p-0"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>results   <span class="op">=</span> [card.find(<span class="st">"a"</span>).get(<span class="st">"href"</span>) <span class="cf">for</span> card </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                <span class="kw">in</span> card_body.findAll(<span class="st">"div"</span>, class_ <span class="op">=</span> <span class="st">"lawyer lawyer-list"</span>)]</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Lets take a look at the results:</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>results</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>['anwaltssuche/sabine-aalbers-ojk6m',
+ 'anwaltssuche/frans-aarts-9op8k',
+ 'anwaltssuche/alexander-e-abadschieff-4qj9l',
+ 'anwaltssuche/marco-abate-klgym',
+ 'anwaltssuche/marion-abbassi-abrell-zogqq',
+ 'anwaltssuche/ralf-abbing-lg1al',
+ 'anwaltssuche/eduard-abbrent-jwx77',
+ 'anwaltssuche/yasmin-abd-el-aal-beanw',
+ 'anwaltssuche/abdou-abdel-gabbar-dqnja',
+ 'anwaltssuche/mona-abdel-hamid-rgmx8']</code></pre>
+</div>
+</div>
+<p>Wonderful!! We have succesfully extracted the links (or at least a part of it). However, we need to do this for every page of results that we have. So we need to write down a loop to repeat this same routine in all the pages that we need. If we manually go to the next page, we will see that the URL changes from <code>anwaltssuche?page=1</code> to <code>anwaltssuche?page=2</code>. So this means that we can take advantage of the pagination and just ask the driver to open the new page. Nevertheless, fort he sake of showing the capacities of Selenium, I will adopt another course of action.</p>
+<p>If we go to the bottom of the list of results. We will observe a pagination bar. What we need to do is to click on the Next Page button (<em>Vorwärts</em>) and we will have the next ten lawyers sorted alphabetically. To do this we need to locate the HTML element associated to this button in the code. If we right-click on the element and inspect it, we can observe that the pagination bar is associated to a <strong>ul tag</strong> and that each of the buttons of this pagination bar is associated to a <strong>li tag</strong> within it.</p>
+<p><img src="pagination.png" width="100%"></p>
+<p>We can right click the respective <strong>li tag</strong> in order to copy its <strong>XPATH</strong>, which is a really long path and then we can click on this element by running the following:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Defining XPATH for the NEXT PAGE button:</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>xpath_nextPage <span class="op">=</span> <span class="st">'//*[@id="article-12"]/div[1]/div[2]/div[3]/nav/ul/li[8]/a'</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Clicking on defined element</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>wait.until(EC.element_to_be_clickable((By.XPATH, xpath_nextPage))).click()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>After we run the above lines, we should see that the Chromium driver is now on page 2 of the results. Meaning that we can just retrieve the source code and use BeautifulSoup to fetch the URLs that we want. Which is a good thing now. The above startegy relies on the fact that the Next Page button is always the 8th <strong>li tag</strong> in the pagination bar. However, if we now go to the bottom of the second page of results, we can see that this is no longer the case. Given that now, we can also go back to the first page, the pagination bar include a new button and now the Next Page button is now the 9th element.</p>
+<p>Therefore, if we want to crawl across pages retrieving all the URLs, we need to adjust this in our loop until the Next Page button has a stable position in the pagination bar.</p>
+<p>Taking all of the above issues into account, our loop code to retrive the individual links for the first 15 pages of results can be written as follows:</p>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating an empty list to store results</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>lawyers_links <span class="op">=</span> []</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Loopinga across pages</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> page <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">16</span>):</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fetching/Parsening</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Currently extracting links from page "</span> <span class="op">+</span> <span class="bu">str</span>(page))</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    content <span class="op">=</span> driver.page_source</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    soup    <span class="op">=</span> BeautifulSoup(content, <span class="st">"lxml"</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extracting links</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    card_body <span class="op">=</span> soup.find(<span class="st">"div"</span>, class_ <span class="op">=</span> <span class="st">"card-body p-0"</span>)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    results   <span class="op">=</span> [card.find(<span class="st">"a"</span>).get(<span class="st">"href"</span>) <span class="cf">for</span> card </span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>                    <span class="kw">in</span> card_body.findAll(<span class="st">"div"</span>, class_ <span class="op">=</span> <span class="st">"lawyer lawyer-list"</span>)]</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Storing links</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    lawyers_links.extend(results)</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Defining NEXT PAGE xpath</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> page <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>        nextpath <span class="op">=</span> <span class="st">'//*[@id="article-12"]/div[1]/div[2]/div[3]/nav/ul/li[8]/a'</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> page <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>        nextpath <span class="op">=</span> <span class="st">'//*[@id="article-12"]/div[1]/div[2]/div[3]/nav/ul/li[9]/a'</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> page <span class="op">&gt;</span> <span class="dv">2</span>:</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>        nextpath <span class="op">=</span> <span class="st">'//*[@id="article-12"]/div[1]/div[2]/div[3]/nav/ul/li[10]/a'</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Clicking on the next page</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> page <span class="op">&lt;</span> <span class="dv">5865</span>:</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>        wait.until(EC.element_to_be_clickable((By.XPATH, nextpath))).click()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Currently extracting links from page 1
+Currently extracting links from page 2
+Currently extracting links from page 3
+Currently extracting links from page 4
+Currently extracting links from page 5
+Currently extracting links from page 6
+Currently extracting links from page 7
+Currently extracting links from page 8
+Currently extracting links from page 9
+Currently extracting links from page 10
+Currently extracting links from page 11
+Currently extracting links from page 12
+Currently extracting links from page 13
+Currently extracting links from page 14
+Currently extracting links from page 15</code></pre>
+</div>
+</div>
+<p>Now that we have successfully retrieve the links, we can proceed to scrape the information from the individual pages using the tools that we learned in the previous post.</p>
+<blockquote class="blockquote">
+<p><strong>Advice</strong>: Don’t forget to close the driver by running: driver.close()</p>
+</blockquote>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Defining headers</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>agent <span class="op">=</span> [<span class="st">"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "</span>,</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>         <span class="st">"AppleWebKit/537.36 (KHTML, like Gecko) Chrome/"</span>,</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>         <span class="st">"96.0.4664.110 Safari/537.36"</span>]</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>headers <span class="op">=</span> {</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"User-Agent"</span>: <span class="st">""</span>.join(agent)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Defining a function to extract the information from a website</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> html_extraction(lawyer_extension):</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define the root URL to scrap:</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    base_url <span class="op">=</span> <span class="ss">f"https://anwaltauskunft.de/</span><span class="sc">{</span>lawyer_extension<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fetching/parsening</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    base_response <span class="op">=</span> requests.get(base_url, </span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>                                 headers <span class="op">=</span> headers)</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>    base_soup     <span class="op">=</span> BeautifulSoup(base_response.text, <span class="st">"lxml"</span>)</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>    time.sleep(<span class="dv">2</span>)</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extracting info from the website</span></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>    name    <span class="op">=</span> base_soup.find(<span class="st">"div"</span>, class_ <span class="op">=</span> <span class="st">"h1 name"</span>).text.strip()</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> :</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>        address <span class="op">=</span> base_soup.find(<span class="st">"address"</span>).text.strip()</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>        address <span class="op">=</span> re.sub(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>, <span class="st">", "</span>, address)</span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">AttributeError</span>:</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>        address <span class="op">=</span> <span class="st">"NA"</span></span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>        specs   <span class="op">=</span> base_soup.find(<span class="st">"div"</span>, class_ <span class="op">=</span> <span class="st">"lawyer-sections"</span>).find(<span class="st">"h6"</span>)</span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>        specs   <span class="op">=</span> specs.find_next_sibling(<span class="st">"div"</span>).text.strip()</span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>        specs   <span class="op">=</span> re.sub(<span class="st">"</span><span class="ch">\n</span><span class="st">|</span><span class="ch">\n\n</span><span class="st">"</span>, <span class="st">", "</span>, specs)</span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">AttributeError</span>:</span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>        specs   <span class="op">=</span> <span class="st">"NA"</span></span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>        languages <span class="op">=</span> base_soup.find(<span class="st">"div"</span>, class_ <span class="op">=</span> <span class="st">"lawyer-languages"</span>).find(<span class="st">"h6"</span>)</span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>        languages <span class="op">=</span> languages.find_next_sibling(<span class="st">"ul"</span>).text.strip()</span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">AttributeError</span>:</span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>        languages <span class="op">=</span> <span class="st">"NA"</span></span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Getting PDF URL</span></span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a>    header  <span class="op">=</span> base_soup.find(<span class="st">"div"</span>, class_ <span class="op">=</span> <span class="st">"lawyer-detail-head m-0"</span>).select_one(<span class="st">"div &gt; div:nth-child(1)"</span>)</span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a>    pdf_btn <span class="op">=</span> header.find(<span class="st">"ul"</span>).select_one(<span class="st">"ul &gt; li:nth-child(2)"</span>)</span>
+<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a>    pdf_ext <span class="op">=</span> pdf_btn.find(<span class="st">"a"</span>).get(<span class="st">"href"</span>)</span>
+<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Defining dictionary entry</span></span>
+<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a>    dct <span class="op">=</span> {</span>
+<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a>        <span class="st">"name"</span>               : name,</span>
+<span id="cb13-56"><a href="#cb13-56" aria-hidden="true" tabindex="-1"></a>        <span class="st">"address"</span>            : address,</span>
+<span id="cb13-57"><a href="#cb13-57" aria-hidden="true" tabindex="-1"></a>        <span class="st">"specializations"</span>    : specs,</span>
+<span id="cb13-58"><a href="#cb13-58" aria-hidden="true" tabindex="-1"></a>        <span class="st">"languages"</span>          : languages,</span>
+<span id="cb13-59"><a href="#cb13-59" aria-hidden="true" tabindex="-1"></a>        <span class="st">"PDF"</span>                : pdf_ext,</span>
+<span id="cb13-60"><a href="#cb13-60" aria-hidden="true" tabindex="-1"></a>        <span class="st">"URL"</span>                : base_url</span>
+<span id="cb13-61"><a href="#cb13-61" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb13-62"><a href="#cb13-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-63"><a href="#cb13-63" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dct</span>
+<span id="cb13-64"><a href="#cb13-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-65"><a href="#cb13-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating an empty list to store results</span></span>
+<span id="cb13-66"><a href="#cb13-66" aria-hidden="true" tabindex="-1"></a>lawyers_list <span class="op">=</span> []</span>
+<span id="cb13-67"><a href="#cb13-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-68"><a href="#cb13-68" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting up a counter</span></span>
+<span id="cb13-69"><a href="#cb13-69" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb13-70"><a href="#cb13-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-71"><a href="#cb13-71" aria-hidden="true" tabindex="-1"></a><span class="co"># Looping across the first 10 links to retrieve information:</span></span>
+<span id="cb13-72"><a href="#cb13-72" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> link <span class="kw">in</span> lawyers_links[<span class="dv">1</span>:<span class="dv">10</span>]:</span>
+<span id="cb13-73"><a href="#cb13-73" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-74"><a href="#cb13-74" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Applying functions to retrieve information</span></span>
+<span id="cb13-75"><a href="#cb13-75" aria-hidden="true" tabindex="-1"></a>    html_info <span class="op">=</span> html_extraction(link)</span>
+<span id="cb13-76"><a href="#cb13-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-77"><a href="#cb13-77" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Appending to main list</span></span>
+<span id="cb13-78"><a href="#cb13-78" aria-hidden="true" tabindex="-1"></a>    lawyers_list.append(html_info)</span>
+<span id="cb13-79"><a href="#cb13-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-80"><a href="#cb13-80" aria-hidden="true" tabindex="-1"></a><span class="co"># Saving data into a dataframe    </span></span>
+<span id="cb13-81"><a href="#cb13-81" aria-hidden="true" tabindex="-1"></a>master_data <span class="op">=</span> pd.DataFrame(lawyers_list).drop_duplicates()    </span>
+<span id="cb13-82"><a href="#cb13-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-83"><a href="#cb13-83" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's take a look at our results</span></span>
+<span id="cb13-84"><a href="#cb13-84" aria-hidden="true" tabindex="-1"></a>master_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>name</th>
+      <th>address</th>
+      <th>specializations</th>
+      <th>languages</th>
+      <th>PDF</th>
+      <th>URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Christoph Podszun</td>
+      <td>Rosental 1, 44135 Dortmund</td>
+      <td>Jugendstrafrecht, Straf- und Strafverfahrensre...</td>
+      <td>Französisch\n                                 ...</td>
+      <td>anwaltssuche/christoph-podszun-21lxy?pdf=18</td>
+      <td>https://anwaltauskunft.de/anwaltssuche/christo...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Daniel Feigl</td>
+      <td>Hopfenstr. 8, 80335 München</td>
+      <td>Steuerrecht, Gesellschaftsrecht, Erbrecht</td>
+      <td>Englisch</td>
+      <td>anwaltssuche/daniel-feigl-bmod8?pdf=18</td>
+      <td>https://anwaltauskunft.de/anwaltssuche/daniel-...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Gesa Mielcke</td>
+      <td>Horster Str. 23, 46236 Bottrop</td>
+      <td>Testamentsvollstreckung, Insolvenzrecht, Verbr...</td>
+      <td>Englisch\n                                    ...</td>
+      <td>anwaltssuche/gesa-mielcke-90exn?pdf=18</td>
+      <td>https://anwaltauskunft.de/anwaltssuche/gesa-mi...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Benjamin Peschel</td>
+      <td>Speditionstr. 1, 40221 Düsseldorf</td>
+      <td>NA</td>
+      <td>NA</td>
+      <td>anwaltssuche/benjamin-peschel-nlwno?pdf=18</td>
+      <td>https://anwaltauskunft.de/anwaltssuche/benjami...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Simone Schmidgen</td>
+      <td>Harkortstr. 15, 40210 Düsseldorf</td>
+      <td>Verkehrszivilrecht, Ehe- und Familienrecht, Er...</td>
+      <td>Englisch</td>
+      <td>anwaltssuche/simone-schmidgen-wgv7q?pdf=18</td>
+      <td>https://anwaltauskunft.de/anwaltssuche/simone-...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Andrea Grimmer-Vohrer</td>
+      <td>Bahnhofstr. 47/1, 73430 Aalen</td>
+      <td>Wohnungseigentumsrecht, Miet- und Pachtrecht, ...</td>
+      <td>Englisch\n                                    ...</td>
+      <td>anwaltssuche/andrea-grimmer-vohrer-eldpw?pdf=18</td>
+      <td>https://anwaltauskunft.de/anwaltssuche/andrea-...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Jan Schoonbrood</td>
+      <td>Kloosterweg 1, 6412 CN HEERLEN, Niederlande</td>
+      <td>Niederlande</td>
+      <td>Englisch\n                                    ...</td>
+      <td>anwaltssuche/jan-schoonbrood-xzmaz?pdf=18</td>
+      <td>https://anwaltauskunft.de/anwaltssuche/jan-sch...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Birgid Riedelbauch-Hastreiter</td>
+      <td>Ludwigstr. 25, 95632 Wunsiedel</td>
+      <td>NA</td>
+      <td>NA</td>
+      <td>anwaltssuche/birgid-riedelbauch-hastreiter-kmy...</td>
+      <td>https://anwaltauskunft.de/anwaltssuche/birgid-...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Ass. jur. Nicklas M. Zielen</td>
+      <td>Marburger Str. 25, 35088 Battenberg</td>
+      <td>Zivilrecht, Verkehrsrecht, Telekommunikationsr...</td>
+      <td>Englisch\n                                    ...</td>
+      <td>anwaltssuche/ass-jur-nicklas-m-zielen-bewlw?pd...</td>
+      <td>https://anwaltauskunft.de/anwaltssuche/ass-jur...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Results look wonderful!!!</p>
+<p>As you could have noticed, we did not retrieve the contact information because this data is encripted within the source code. In an upcoming post, I will be explaining on how can we extract this type of information by just taking an alternative course of action.</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

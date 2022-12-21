@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>webscrapping_intro</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="01. webscrapping_intro_files/libs/clipboard/clipboard.min.js"></script>
+<script src="01. webscrapping_intro_files/libs/quarto-html/quarto.js"></script>
+<script src="01. webscrapping_intro_files/libs/quarto-html/popper.min.js"></script>
+<script src="01. webscrapping_intro_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="01. webscrapping_intro_files/libs/quarto-html/anchor.min.js"></script>
+<link href="01. webscrapping_intro_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="01. webscrapping_intro_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="01. webscrapping_intro_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="01. webscrapping_intro_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="01. webscrapping_intro_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="a-very-brief-introduction-to-web-scrapping" class="level1">
+<h1>A very brief introduction to Web Scrapping</h1>
+<p>As a data analyst and an economist, there are times in which you would have to go out of your comfort zone and search for the data needed for your research or analysis. Nowadays, there is no better data pool than the internet. You have an inmensive ocean of information at your disposal and the digital world in which we live makes it possible to access certain data in a single click. However, the amount of information that is compiled and organize in a way for you to use is just a small fraction of all the information available out there. Therefore, for some research questions, it is necessary to use alternative tools to gather and compile this information. One of such tools (or group opf tools) are the ones we usually label as <strong>Web Scraping</strong>. In this series of articles, I will cover the basics of webscraping and how to apply it using some of the Python libraries available.</p>
+<section id="what-is-web-scraping" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-web-scraping">What is Web Scraping?</h2>
+<p>In a nutshell, Web Scraping is the process in which we collect information from the web with the objective to export it as an organized data structure that would fit our needs. Under this definition, manual processes of coping and pasting the information from the web would be considered as web scraping. However, given the complexity and, most importantly, the huge volumes of the information that we would usually like to extract, web scraping is most likely to be done in an automatic fashion. For this, it is common to program an automatic web scrapper using any of the programming languages available like Python, R or JavaScript.</p>
+<p>There are some cases in which the websites allow to access their data throught an Application Programming Interface or, most commmonly refer to, as API. An API is a set of definitions and protocols that allow the communication between two software applications through a set of previously defined rules. In our specific case, a formal communication channel between our “<em>scrapper</em>” and the website’s server to automatically download their data. This process is the fastest way to access the data on the internet. Nevertheless, this is not always the case and sometimes we will have to program our own “<em>bot</em>” to scrap the information we want. Consider the crawler and scraper bots as the last resource to achieve your goals.</p>
+</section>
+<section id="is-web-scraping-legal" class="level2">
+<h2 class="anchored" data-anchor-id="is-web-scraping-legal">Is Web Scraping legal?</h2>
+<p>Due to the increasing popularity and use of webscraping, along with some legal cases, many people asks: <em>Is web scraping legal?</em> In reality, this question might be difficult to access and it would depend on the geographical/institutional/legal grounds where it is asked and, most importantly, I’m no lawyer at all. However, there is a few point that we should always take into account.</p>
+<p>For example, what kind of data are we extracting from the web? It is important that we make sure that we are extracting <strong>Publicly Available Data</strong>. Information is considered publicly available when…</p>
+<ul>
+<li>The user has made the data public</li>
+<li>No account or login information is required to access the data</li>
+<li>The robots.txt file does not prohibit the extraction of the information we are targeting.</li>
+</ul>
+<p>PromptCloud.com has a straighforward article on <a href="https://www.promptcloud.com/blog/how-to-read-and-respect-robots-file/">how to read and respect robots.txt files</a>. For more information about the legality of web scraping, you can check <a href="https://www.youtube.com/watch?v=tcMdWM8wmqs&amp;t=65s">this video</a> from ParseHub.</p>
+</section>
+<section id="how-does-web-scraping-works" class="level2">
+<h2 class="anchored" data-anchor-id="how-does-web-scraping-works">How does Web Scraping works?</h2>
+<p>As we mentioned before, Web Scrappoing is the process of extracting information from the web. However, in order to extract it, you would first have to search for this data even within a single website. Therefore, we usually talk about making use of a web crawler and a web scraper.</p>
+<p>As explained in <a href="https://www.zyte.com/learn/what-is-web-scraping/">this article</a> by Zyte.com,</p>
+<blockquote class="blockquote">
+<p>A web crawler, which we generally call a “spider,” is an artificial intelligence that browses the internet to index and search for content by following links and exploring websites.</p>
+</blockquote>
+<p>On the other hand,</p>
+<blockquote class="blockquote">
+<p>A web scraper is a specialized tool designed to accurately and quickly extract data from a web page.</p>
+</blockquote>
+<p>In other words, while the crawler targets URLs to pass to the scraper, the scraper makes use of tools such as XPaths, CSS selectors and/or regular expressions to target chunks of code within the HTML code of a website and create an organized data set for your desired use. However, sometimes, a crawler might behave just like a scraper given that it might have to make use of the same tools to extract the desire URLs.</p>
+<p>Once that know the URLs of the pages that you want to scrap, you request (and download) the HTML code of those pages, and then you locate the information that you would like extract. For example, let’s say that we would like to extract the public information (authors, title, publication date, etc) of the <a href="https://www.aeaweb.org/articles?id=10.1257/app.20180294">following article</a> from the American Economic Association. If you were to right-click anywhere on the website and chose to inspect the HTML elements, you will see that the HTML code of this specific page looks something like this:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="html_example.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image</figcaption><p></p>
+</figure>
+</div>
+<p>As you can see, the HTML code of the website looks something like a tree with all those nested lines of code. And somewhere within those branches, we will find the information that we want. For example, if we go deep enough in those branches, we can locate the title and the names of the authors like this:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="html_example2.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">example2</figcaption><p></p>
+</figure>
+</div>
+<p>Having located the elements that we want, we can make use of the tree structure of the HTML to reach this element. As you can see in the image above, the title of the article is represented in the following way:</p>
+<pre class="{html}"><code>&lt;h1 class = "title"&gt; Migration Networks and Location Decisions: Evidence from US Mass Migration &lt;/h1&gt;</code></pre>
+<p>In other words, the title is wrapped within a tag element <code>&lt;h1&gt;</code> with <code>class = "title"</code>. Additionally, if we inspect the whole HTML tree, we can see that this element is located in the following location:</p>
+<pre class="{html}"><code>html &gt; body &gt; main &gt; div &gt; section &gt; h1</code></pre>
+<p>The above is sort of a <em>route</em> or <em>path</em> that we can follow through the branches (or children) of the HTML code in order to reach the element that we need. According to this route, we first need to locate the <code>&lt;body&gt;</code> tag, then go deeper in the tree and through the <code>&lt;main&gt;</code> tag and follow the path all the way until we reach the <code>&lt;h1&gt;</code> tag that we are looking for. At this point, you might think that this is a very exhausting way to locate and extract a single piece of text.</p>
+<p>Fortunately, as in real life, there are many ways to refer to <em>where</em> an element is located within the HTML code. And, depending on the structure of the code, there are methods that allow you to take <strong><em>shortcuts</em></strong> to your desired element. There are many methods available, however, the most popular ones are the so call XPaths and CSS Selectors.</p>
+</section>
+<section id="css-selectors-vs-xpath" class="level2">
+<h2 class="anchored" data-anchor-id="css-selectors-vs-xpath">CSS Selectors vs XPath</h2>
+<p>Sadly, I won’t go in depth with these type of locators in this article. Nonetheless, I will borrow some definitions from <a href="https://oxylabs.io/blog/xpath-vs-css">this excellent article</a> from Oxylabs and then I will explain the very basics of these locators.</p>
+<blockquote class="blockquote">
+<p>CSS, or Cascading Style Sheet, is a set of components and rules that inform the browser which HTML elements have to be located and applied with CSS properties.</p>
+</blockquote>
+<p>As we know, HTML is the standard language in which documents are designed for their diffusion in the web. As a markup language, its beauty comes mainly from its simplicity. HTML relies on the use of style sheets that will apply formatting and all the stunning visuals that we expect from the web to the elements present in the HTML code. Today, the standard relies on the use of Cascading Style Sheet or CSS.</p>
+<blockquote class="blockquote">
+<p>HTML is rarely served without CSS. If there is a need to change the appearance of any HTML element, the most common way to do that is by applying a style to it – it can be as simple as changing text color, or it can be more complex if you are using animation.</p>
+</blockquote>
+<p>Continuing with our example, the title, as we can appreciate, has some unique formatting that no other element in the page has. It has a certain font size, it uses a certain font family, a certain font color, etc. These characteristics are not explicitly expressed in the <code>&lt;h1&gt;</code> element. But rather, the developers decided to assign these characteristics to ALL elements that have a <code>class = "title"</code>. Given that no other element has the class “title” in the entire code, you can call and refer to the <code>&lt;h1&gt;</code> element that we are interested in, by referencing its class using the folloing CSS Selector: <code>.title</code>. As you will see, you can also assign style and formatting not only through classes, but also identifiers, attributes, positioning, among others. In the same manner, you can also select this same element by calling its XML Path, or XPath.</p>
+<blockquote class="blockquote">
+<p>XPath is a language that takes advantage of the hierarchical structure of a XML document in order to build up expressions that can go through the document and select pre-defined parts of it.</p>
+</blockquote>
+<p>The idea behind XPath is to give a sort of navigational system that can go through the document and find an element by either their hierarchical position or through a matching mechanism. For example, if we wanted to select <code>&lt;h1&gt;</code> by taking advantage that no other element has the title class, we would use the following XPath: <code>\\*[contains(@class, 'title')]</code>. As you can see, we are not locating the element by their hierarchical position but making of a matching pattern that works similarly to regular expressions.</p>
+<p>The previous calls work because the element that we are searching for is the only element in the entire HTML code that uses the <code>class = "title"</code>. However, if there were more elements that used this same class, things would be a bit more complicated. At the end, you will have to rely on different traits to refer to a certain element in a website, such as their style class, their identifiers, their positioning, their ancestors, their visible text, among others.</p>
+<p>Most of the programming of a web scrapper involves the correct identification and selection of the elements in the HTML code. The tricky part is that every website is different in a unique manner, and what works for one website, might not work for another.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -10,3 +10,5 @@ content/blog/.DS_Store
 content/blog/.DS_Store
 resources/.DS_Store
 resources/_gen/.DS_Store
+
+/.quarto/

@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>requests</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="02-requests_files/libs/clipboard/clipboard.min.js"></script>
+<script src="02-requests_files/libs/quarto-html/quarto.js"></script>
+<script src="02-requests_files/libs/quarto-html/popper.min.js"></script>
+<script src="02-requests_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="02-requests_files/libs/quarto-html/anchor.min.js"></script>
+<link href="02-requests_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="02-requests_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="02-requests_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="02-requests_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="02-requests_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+<p>In the <a href="https://www.carlos-toruno.com/blog/webscrapping/01-intro/">previous post</a>, I explained the very basics of Web Scraping, how does it work and I also introduced the use of CSS Selectors and XPath to locate elements in the HTML code. In this article, I will explain how can we extract information from online websites when using the <a href="https://requests.readthedocs.io/en/latest/">requests</a> library in Python.</p>
+<p>In this example, we will be extracting information from the <a href="https://rejestradwokatow.pl/adwokat">Polish National Registry of Lawyers</a>. More specifically, we would like to know the geographical distribution of lawyers, their law specializations, their experience, among other available data.</p>
+<pre><code>&lt;img src="featured.png" width="100%"/&gt;</code></pre>
+<section id="be-polite" class="level2">
+<h2 class="anchored" data-anchor-id="be-polite">Be polite</h2>
+<p>As mentioned in the previous post of this series, before scrapping the information, we need to comply with the standard <em>Étiquette</em>. Therefore, lets go through a checklist of things to take into account before procceding.</p>
+<section id="is-the-data-publicly-available" class="level4">
+<h4 class="anchored" data-anchor-id="is-the-data-publicly-available">Is the data publicly available?</h4>
+<p>As we can observe, all the information that we are targeting is available to anyone who enters this website. We don’t know how was this data disclosured to individuals, so we are assuming that individuals know that their personal information is made public in this website and that they agreed on it. Given that we are talking about a national organization, this assumption is very plausible. In the same manner, no login or special access is required to view this information.</p>
+<p>Addittionally, the <a href="https://rejestradwokatow.pl/robots.txt">robots.txt</a> file does not disallow any type of content. However, it asks to set a crawl-delay of 10 seconds, a request that we will respect.</p>
+</section>
+<section id="can-we-access-the-data-through-other-means" class="level4">
+<h4 class="anchored" data-anchor-id="can-we-access-the-data-through-other-means">Can we access the data through other means?</h4>
+<p>As explained before, we should always check if we can access and download the data through an API or by locating the AJAX calls if the website is dynamic. This last part means that we should check if the data is embedded within the source code or if it is call from other URL.</p>
+<p>I have already checked the possibilities (at least the ones I know) and I concluded that we need to program a bot to extract the information. Also, if you prefer to use R to extract information from the internet, you can check the <a href="https://dmi3kno.github.io/polite/">Polite package</a>, which provides a very clear protocol to follow when scraping the web.</p>
+</section>
+</section>
+<section id="requests-and-beautiful-soup" class="level2">
+<h2 class="anchored" data-anchor-id="requests-and-beautiful-soup">Requests and Beautiful Soup</h2>
+<p><a href="https://requests.readthedocs.io/en/latest/">Requests</a> is a Python library that allows you to send HTTP requests to a specific website to access its source code. If you are wondering what is HTTP and why do we need to do this, I would highly suggest you to watch this short video explaining it:</p>
+<pre class="{html}"><code>&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/tkfVQK6UxDI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;</code></pre>
+<p>In summary, we will use this library to send a HTTP requests using either the GET or POST methods, so we can fetch the source code of the website and load it into our Python session. The requests library is one of the most used Python libraries nowadays. In order to install it, you can run the following from your terminal:</p>
+<pre><code>pip install requests</code></pre>
+<p>… or install it from your anaconda distribution by running the following:</p>
+<pre><code>conda install -c anaconda requests</code></pre>
+<p>The request library will helps us get the code. However, once that we have the HTML code, we will need extra help to read this and to quickly locate elements within the source code. Depending on the length and complexity of the website, the HTML code can extend from a few hundred to even thousands of lines. Here is where the <a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup library</a> enters the stage.</p>
+<p>Beautiful Soup is a Python library that provides methods to quickly navigate, search and identify elements in HTML or XML documents. In other words, Beautiful Soup functions as a parser. To install it, you can run the following from your terminal:</p>
+<pre><code>pip install beautifulsoup4</code></pre>
+<p>… or install it from your anaconda distribution by running the following:</p>
+<pre><code>conda install -c anaconda beautifulsoup4</code></pre>
+</section>
+<section id="extracting-the-information" class="level2">
+<h2 class="anchored" data-anchor-id="extracting-the-information">Extracting the information</h2>
+<p>The website we are going to scrap, contains information for more than 21,000 lawyers. For this article, we will just extract the information for the first set of lawyers.</p>
+<pre><code>&lt;img src="website.png" width="100%"/&gt;</code></pre>
+<p>We begin by importing the libraries we will use.</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As mentioned before, we have to be polite when scraping the web. Therefore, we need to present ourselves by adding a customize header to our HTTP request. The header is used to provide information about the request context, so the server can tailor the reponse according to the request made. To set up a header, we define the information in a dictionary as follows:</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Defining headers</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>headers <span class="op">=</span> {</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"User-Agent"</span>: <span class="st">"My App 1.0.0 (contact: user@mail.com)"</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Back to the website we are extracting the information from, we can see that if we click on <strong>SEARCH</strong> without giving any filtering criteria, we get a table listing all available individuals with some information such as the name, the location and the proffesional status of the individual.</p>
+<pre><code>&lt;img src="lawyers.png" width="100%"/&gt;</code></pre>
+<p>The information presented in this table is good, but not enough. However, if you click on <strong>Details</strong> (magnifying glass icon) at the end of the table, the site takes you to the individual’s personal page where you can obtain complete information about the individual.</p>
+<pre><code>&lt;img src="details_info.png" width="100%"/&gt;</code></pre>
+<p>It is the information in these personal pages the one that we want to scrap. So, our first task is to obtain a list with all the URLs that take us to these pages. These URLs are contained inside each of the magnifying glass icons in the table that we got before. If you inspect tthe HTML code for these icons, you will see the following:</p>
+<pre><code>&lt;img src="URLs.png" width="100%"/&gt;</code></pre>
+<p>As we can observe, the URL for this specific lawyer is specified as a <strong>href</strong> attribute within the <strong>a tag</strong> that contains the details (magnifying glass) icon. To extract this information, we proceed as follows:</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating an empty list to store results</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>lawyer_links <span class="op">=</span> []</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Looping across pages to get all lamaster_datainks</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> page <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">4</span>):</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define the root URL to scrap:</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    root_url <span class="op">=</span> <span class="ss">f"https://rejestradwokatow.pl/adwokat/list/strona/</span><span class="sc">{</span>page<span class="sc">}</span><span class="ss">/sta/2"</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fetching and parsening the information</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    page_response <span class="op">=</span> requests.get(root_url, </span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>                                 headers <span class="op">=</span> headers)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    page_soup     <span class="op">=</span> BeautifulSoup(page_response.text, <span class="st">"lxml"</span>)</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    time.sleep(<span class="dv">5</span>)</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extracting the URL from the href attributes</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row <span class="kw">in</span> page_soup.findAll(<span class="st">"tr"</span>)[<span class="dv">1</span>:]:</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>        link <span class="op">=</span> row.select_one(<span class="st">"tr &gt; td:nth-child(8) &gt; a"</span>).get(<span class="st">"href"</span>)</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>        lawyer_links.append(link)</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="co"># How does it look? Preview of the first 5 URL that we just extracted</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>lawyer_links[<span class="dv">0</span>:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>['https://rejestradwokatow.pl/adwokat/abaewicz-dominik-49965',
+ 'https://rejestradwokatow.pl/adwokat/abram-grzegorz-43883',
+ 'https://rejestradwokatow.pl/adwokat/abramiuk-jakub-55005',
+ 'https://rejestradwokatow.pl/adwokat/abramowicz-bartosz-35809',
+ 'https://rejestradwokatow.pl/adwokat/abramowicz-jakub-35810']</code></pre>
+</div>
+</div>
+<p>There are two things I would like to clarify from the code presented above. First, the <strong>root URL</strong> that I used is different that the one that you are seeing in your browser. However, if you click on the <strong>NEXT PAGE</strong> icon at the end of the table, you will see that the URL in your browser is similar to the one I’m using as <strong>root URL</strong>. This is because in websites that have a pagination layout, the first page does not reflect the “<em>true</em>” URL. Therefore, it is a good advise to use the URL from the following pages as the pivoting link to perform the scraping.</p>
+<p>Second, to locate all the URL from the table, I decided to first select ALL the table rows (designated with the <strong>tr tag</strong>), and from each one of these rows, I locate the <strong>a tag</strong> which is always in the 8th column for each row (designated with the <strong>td tag</strong>). Once I’m able to locate and select the HTML tag that contains the URL, I extract the href attribute from it.</p>
+<p>Now that we can access the individual pages for each lawyer, we need to extract the information we want from each of these pages. Each one of these URLs looks as follows:</p>
+<pre><code>&lt;img src="lawyer_page.png" width="100%"/&gt;</code></pre>
+<p>If we inspect the HTML code of the elements we want to extract, we will notice that most of them are contained in <strong>div tags</strong> that have no attributes that would help us to quickly identify them in the HTML tree. For example, the address information looks like this in the source code:</p>
+<pre><code>&lt;img src="address.png" width="100%"/&gt;</code></pre>
+<p>However, we can notice something from how the HTML is structured. In the case of the address information, there is a <em>parenting</em> <strong>div tag</strong> that contains the whole row. Under this tag, we can find two sibling tags. The first one is a <strong>span tag</strong> that contains the words “<em>Correspondence address:</em>” (in polish), and the second one is a <strong>div tag</strong> that contains the specific address for each lawyer. The later ould change from person to person, but the first one will always be the same. What we can do, is use this visible text to identify the <strong>span tag</strong> and then select its sibling to extract the information we want. For this, we can use regular expressions methods from the <a href="https://docs.python.org/3/library/re.html">re library</a> to match the visible key words from the string attribute as follows:</p>
+<pre><code>BeautifulSoup.find("span", string = re.compile("KEY_WORD")).find_next_sibling("div")</code></pre>
+<p>To identify the other HTML elements, we follow a similar method to the exposed above and we save the results into a dictionary that we then append to a list that contains the results for each individual. In the following code, we scrap the information for the first 25 individuals from wwhich we obtained their respectives URLs:</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating an empty list to store results</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>lawyers_list <span class="op">=</span> []</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Defining a decoding function to read emails (don't worry about this part, I'll make another blogpost about this):</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cfDecodeEmail(encodedString):</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> <span class="bu">int</span>(encodedString[:<span class="dv">2</span>],<span class="dv">16</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    email <span class="op">=</span> <span class="st">''</span>.join([<span class="bu">chr</span>(<span class="bu">int</span>(encodedString[i:i<span class="op">+</span><span class="dv">2</span>], <span class="dv">16</span>) <span class="op">^</span> r) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="bu">len</span>(encodedString), <span class="dv">2</span>)])</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> email</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Looping across retrieved links</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> link <span class="kw">in</span> lawyer_links[<span class="dv">0</span>:<span class="dv">25</span>]:</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fetching/parsening</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    record_response <span class="op">=</span> requests.get(link, headers <span class="op">=</span> headers)</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    record_soup     <span class="op">=</span> BeautifulSoup(record_response.text, <span class="st">"lxml"</span>)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    time.sleep(<span class="dv">5</span>)</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Retrieving information</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    personal_info   <span class="op">=</span> record_soup.find(<span class="st">"div"</span>, class_ <span class="op">=</span> <span class="st">"line_list_K"</span>)</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>    name            <span class="op">=</span> record_soup.find(<span class="st">"section"</span>).find(<span class="st">"h2"</span>).text.strip()</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>    status          <span class="op">=</span> personal_info.find(<span class="st">"span"</span>, string <span class="op">=</span> re.<span class="bu">compile</span>(<span class="st">"Status:"</span>)).find_next_sibling(<span class="st">"div"</span>).text.strip()</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>    registered_on   <span class="op">=</span> personal_info.find(<span class="st">"span"</span>, string <span class="op">=</span> re.<span class="bu">compile</span>(<span class="st">"Data wpisu w aktualnej"</span>)).find_next_sibling(<span class="st">"div"</span>).text.strip()</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>        address   <span class="op">=</span> personal_info.find(<span class="st">"span"</span>, string <span class="op">=</span> re.<span class="bu">compile</span>(<span class="st">"Adres do korespondencji"</span>)).find_next_sibling(<span class="st">"div"</span>).text.strip()</span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>        address   <span class="op">=</span> re.sub(<span class="st">"</span><span class="ch">\t</span><span class="st">|</span><span class="ch">\n</span><span class="st">"</span>, <span class="st">","</span>, address)</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>        address   <span class="op">=</span> re.sub(<span class="st">"\s\s"</span>, <span class="st">""</span>, address)</span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">AttributeError</span>:</span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>        address   <span class="op">=</span> <span class="st">"NA"</span></span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>: </span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>        phone       <span class="op">=</span> personal_info.find(<span class="st">"span"</span>, string <span class="op">=</span> re.<span class="bu">compile</span>(<span class="st">"Komórkowy"</span>)).find_next_sibling(<span class="st">"div"</span>).text.strip()</span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">AttributeError</span>:</span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>        phone       <span class="op">=</span> <span class="st">"NA"</span></span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>: </span>
+<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>        email       <span class="op">=</span> personal_info.find(<span class="st">"span"</span>, string <span class="op">=</span> re.<span class="bu">compile</span>(<span class="st">"Email"</span>)).find_next_sibling(<span class="st">"div"</span>)</span>
+<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>        email       <span class="op">=</span> email.get(<span class="st">"data-ea"</span>) <span class="op">+</span> <span class="st">"@"</span> <span class="op">+</span> email.get(<span class="st">"data-eb"</span>)</span>
+<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">AttributeError</span>:</span>
+<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a>        email       <span class="op">=</span> <span class="st">"NA"</span></span>
+<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a>    subpanel     <span class="op">=</span> record_soup.find(<span class="st">"div"</span>, class_ <span class="op">=</span> <span class="st">"mb_tab_content special_one"</span>)</span>
+<span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a>        office_info  <span class="op">=</span> subpanel.find(<span class="st">"div"</span>, class_ <span class="op">=</span> <span class="st">"line_list_K"</span>).text</span>
+<span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a>        office_info  <span class="op">=</span> re.sub(<span class="st">"</span><span class="ch">\t</span><span class="st">|</span><span class="ch">\n</span><span class="st">"</span>, <span class="st">","</span>, office_info)</span>
+<span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a>        office_info  <span class="op">=</span> re.sub(<span class="st">"\s\s"</span>, <span class="st">""</span>, office_info)</span>
+<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">AttributeError</span>:</span>
+<span id="cb18-50"><a href="#cb18-50" aria-hidden="true" tabindex="-1"></a>        office_info  <span class="op">=</span> <span class="st">"NA"</span></span>
+<span id="cb18-51"><a href="#cb18-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-52"><a href="#cb18-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb18-53"><a href="#cb18-53" aria-hidden="true" tabindex="-1"></a>        proffesional_phone <span class="op">=</span> re.search(<span class="st">"(?&lt;=Komórkowy:).+?(?=,)"</span>, office_info).group().strip()</span>
+<span id="cb18-54"><a href="#cb18-54" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">AttributeError</span>:</span>
+<span id="cb18-55"><a href="#cb18-55" aria-hidden="true" tabindex="-1"></a>        proffesional_phone <span class="op">=</span> <span class="st">"NA"</span></span>
+<span id="cb18-56"><a href="#cb18-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-57"><a href="#cb18-57" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb18-58"><a href="#cb18-58" aria-hidden="true" tabindex="-1"></a>        proffesional_email <span class="op">=</span> subpanel.find(<span class="st">"div"</span>, class_ <span class="op">=</span> <span class="st">"line_list_K"</span>).find(<span class="st">"a"</span>, class_ <span class="op">=</span> <span class="st">"__cf_email__"</span>).get(<span class="st">"data-cfemail"</span>)</span>
+<span id="cb18-59"><a href="#cb18-59" aria-hidden="true" tabindex="-1"></a>        proffesional_email <span class="op">=</span> cfDecodeEmail(proffesional_email)</span>
+<span id="cb18-60"><a href="#cb18-60" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">AttributeError</span>:</span>
+<span id="cb18-61"><a href="#cb18-61" aria-hidden="true" tabindex="-1"></a>        proffesional_email <span class="op">=</span> <span class="st">"NA"</span></span>
+<span id="cb18-62"><a href="#cb18-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-63"><a href="#cb18-63" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb18-64"><a href="#cb18-64" aria-hidden="true" tabindex="-1"></a>        specs  <span class="op">=</span> subpanel.select_one(<span class="st">"div &gt; div.line_list_A &gt; div"</span>).text.strip()</span>
+<span id="cb18-65"><a href="#cb18-65" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">AttributeError</span>:</span>
+<span id="cb18-66"><a href="#cb18-66" aria-hidden="true" tabindex="-1"></a>        specs  <span class="op">=</span> <span class="st">"NA"</span></span>
+<span id="cb18-67"><a href="#cb18-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-68"><a href="#cb18-68" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Defining dictionary entry</span></span>
+<span id="cb18-69"><a href="#cb18-69" aria-hidden="true" tabindex="-1"></a>    lawyer <span class="op">=</span> {</span>
+<span id="cb18-70"><a href="#cb18-70" aria-hidden="true" tabindex="-1"></a>        <span class="st">"name"</span>               : name,</span>
+<span id="cb18-71"><a href="#cb18-71" aria-hidden="true" tabindex="-1"></a>        <span class="st">"status"</span>             : status,</span>
+<span id="cb18-72"><a href="#cb18-72" aria-hidden="true" tabindex="-1"></a>        <span class="st">"reg_date"</span>           : registered_on,</span>
+<span id="cb18-73"><a href="#cb18-73" aria-hidden="true" tabindex="-1"></a>        <span class="st">"address"</span>            : address,</span>
+<span id="cb18-74"><a href="#cb18-74" aria-hidden="true" tabindex="-1"></a>        <span class="st">"phone"</span>              : phone,</span>
+<span id="cb18-75"><a href="#cb18-75" aria-hidden="true" tabindex="-1"></a>        <span class="st">"email"</span>              : email,</span>
+<span id="cb18-76"><a href="#cb18-76" aria-hidden="true" tabindex="-1"></a>        <span class="st">"office_info"</span>        : office_info,</span>
+<span id="cb18-77"><a href="#cb18-77" aria-hidden="true" tabindex="-1"></a>        <span class="st">"proffesional_phone"</span> : proffesional_phone,</span>
+<span id="cb18-78"><a href="#cb18-78" aria-hidden="true" tabindex="-1"></a>        <span class="st">"proffesional_email"</span> : proffesional_email,</span>
+<span id="cb18-79"><a href="#cb18-79" aria-hidden="true" tabindex="-1"></a>        <span class="st">"specializations"</span>    : specs,</span>
+<span id="cb18-80"><a href="#cb18-80" aria-hidden="true" tabindex="-1"></a>        <span class="st">"URL"</span>                : link</span>
+<span id="cb18-81"><a href="#cb18-81" aria-hidden="true" tabindex="-1"></a>        } </span>
+<span id="cb18-82"><a href="#cb18-82" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-83"><a href="#cb18-83" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Appending to main list</span></span>
+<span id="cb18-84"><a href="#cb18-84" aria-hidden="true" tabindex="-1"></a>    lawyers_list.append(lawyer)</span>
+<span id="cb18-85"><a href="#cb18-85" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Once that we have collected all the information that we want, we can save the list with all the results as a pandas data frame and save it as a CSV file using the following:</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Saving data into a dataframe    </span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>master_data <span class="op">=</span> pd.DataFrame(lawyers_list)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># How does it look? Showwing the first 10 rows of the data frame</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>master_data[<span class="dv">0</span>:<span class="dv">11</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>name</th>
+      <th>status</th>
+      <th>reg_date</th>
+      <th>address</th>
+      <th>phone</th>
+      <th>email</th>
+      <th>office_info</th>
+      <th>proffesional_phone</th>
+      <th>proffesional_email</th>
+      <th>specializations</th>
+      <th>URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Abłażewicz Dominik Witold</td>
+      <td>Wykonujący zawód</td>
+      <td>2010-11-06</td>
+      <td>Kancelaria Adwokacka , Wojewódzka 15/3,40-026 ...</td>
+      <td>NA</td>
+      <td>kancelaria@ablazewicz.pl</td>
+      <td>,,Kancelaria ,Kancelaria Adwokacka,Wojewódzka ...</td>
+      <td>508432180</td>
+      <td>NA</td>
+      <td>Praktyka ogólna</td>
+      <td>https://rejestradwokatow.pl/adwokat/abaewicz-d...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Abram Grzegorz Szymon</td>
+      <td>Wykonujący zawód</td>
+      <td>2011-08-03</td>
+      <td>White &amp; Case M.Studniarek i wspólnicy sp.k. , ...</td>
+      <td>NA</td>
+      <td>grzegorz.abram@whitecase.com</td>
+      <td>,,Kancelaria ,Kancelaria Adwokacka,Lwowska 19,...</td>
+      <td>NA</td>
+      <td>NA</td>
+      <td>Praktyka ogólna</td>
+      <td>https://rejestradwokatow.pl/adwokat/abram-grze...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Abramiuk Jakub Przemysław</td>
+      <td>Wykonujący zawód</td>
+      <td>2015-05-07</td>
+      <td>Kancelaria Adwokacka ,ul. Jezuicka 4 ,20-113 L...</td>
+      <td>600 812 202</td>
+      <td>adwokat@abramiuk.pl</td>
+      <td>,,Kancelaria ,Kancelaria Adwokacka,Jezuicka 4,...</td>
+      <td>NA</td>
+      <td>NA</td>
+      <td>Praktyka ogólna</td>
+      <td>https://rejestradwokatow.pl/adwokat/abramiuk-j...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Abramowicz Bartosz Jan</td>
+      <td>Wykonujący zawód</td>
+      <td>2022-07-07</td>
+      <td>Kancelaria Adwokacka ,ul. Marynin 25A/35,01-46...</td>
+      <td>NA</td>
+      <td>NA</td>
+      <td>,,Kancelaria ,Kancelaria Adwokacka,ul.Marynin ...</td>
+      <td>515456741</td>
+      <td>bartoszjanabramowicz@gmail.com</td>
+      <td>NA</td>
+      <td>https://rejestradwokatow.pl/adwokat/abramowicz...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Abramowicz Jakub</td>
+      <td>Wykonujący zawód</td>
+      <td>2022-07-07</td>
+      <td>Kancelaria Adwokacka , Żupnicza 25/43,03-821 W...</td>
+      <td>NA</td>
+      <td>NA</td>
+      <td>,,Kancelaria ,Kancelaria Adwokacka,Żupnicza 25...</td>
+      <td>792560294</td>
+      <td>jakub.abramowicz2@gmail.com</td>
+      <td>NA</td>
+      <td>https://rejestradwokatow.pl/adwokat/abramowicz...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Abramowicz Jakub Marcin</td>
+      <td>Wykonujący zawód</td>
+      <td>2005-07-11</td>
+      <td>Kancelaria adwokacka , Paulińska 2/12,31-065 K...</td>
+      <td>NA</td>
+      <td>j_abramowicz@o2.pl</td>
+      <td>,,Kancelaria ,Kancelaria Adwokacka,Paulińska 2...</td>
+      <td>503 090 269</td>
+      <td>NA</td>
+      <td>Praktyka ogólna</td>
+      <td>https://rejestradwokatow.pl/adwokat/abramowicz...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Abramowicz Joanna</td>
+      <td>Wykonujący zawód</td>
+      <td>1977-03-29</td>
+      <td>Kancelaria Adwokacka ,ul. Chlebnicka 48/51 ,80...</td>
+      <td>NA</td>
+      <td>abramowicz@pro.onet.pl</td>
+      <td>,,Kancelaria ,Kancelaria Adwokacka,Chlebnicka ...</td>
+      <td>605 622 929</td>
+      <td>abramowicz@pro.onet.pl</td>
+      <td>Praktyka ogólna</td>
+      <td>https://rejestradwokatow.pl/adwokat/abramowicz...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Abramowicz-Beck Maria</td>
+      <td>Wykonujący zawód</td>
+      <td>2016-05-11</td>
+      <td>Kancelaria Adwokacka ,ul. A. Asnyka 4/2,35-001...</td>
+      <td>606 748 459</td>
+      <td>abramowicz.ma@gmail.com</td>
+      <td>,,Kancelaria ,Kancelaria Adwokacka,A. Asnyka 4...</td>
+      <td>606 748 459</td>
+      <td>abramowicz.ma@gmail.com</td>
+      <td>NA</td>
+      <td>https://rejestradwokatow.pl/adwokat/abramowicz...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Abresz Maciej Janusz</td>
+      <td>Wykonujący zawód</td>
+      <td>2002-06-27</td>
+      <td>ul. Łąkowa 4/1,50-36 Wrocław</td>
+      <td>NA</td>
+      <td>NA</td>
+      <td>,,Kancelaria ,Kancelaria Adwokacka,Łąkowa 4/1,...</td>
+      <td>NA</td>
+      <td>NA</td>
+      <td>Praktyka ogólna</td>
+      <td>https://rejestradwokatow.pl/adwokat/abresz-mac...</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Abucewicz Radosław</td>
+      <td>Wykonujący zawód</td>
+      <td>2020-01-16</td>
+      <td>Kancelaria Adwokacka Adwokat Radosław Abucewic...</td>
+      <td>509286278</td>
+      <td>radoslaw-abucewicz@wp.pl</td>
+      <td>,,Kancelaria ,Kancelaria Adwokacka Adwokat Rad...</td>
+      <td>509286278</td>
+      <td>radoslaw-abucewicz@wp.pl</td>
+      <td>NA</td>
+      <td>https://rejestradwokatow.pl/adwokat/abucewicz-...</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Achler Bartłomiej Grzegorz</td>
+      <td>Wykonujący zawód</td>
+      <td>2008-02-27</td>
+      <td>Kancelaria Adwokacka , Chłodna 22a/9,00-891 Wa...</td>
+      <td>NA</td>
+      <td>bartlomiej.achler@achler.pl</td>
+      <td>,,Kancelaria ,Kancelaria Adwokacka,Chłodna 22a...</td>
+      <td>NA</td>
+      <td>NA</td>
+      <td>Prawo i postępowanie cywilne</td>
+      <td>https://rejestradwokatow.pl/adwokat/achler-bar...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
