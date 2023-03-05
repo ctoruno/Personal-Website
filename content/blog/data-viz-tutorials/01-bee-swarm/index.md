@@ -153,7 +153,7 @@ plot
 
 Now that we have a more aesthetic plot, we can derive conclusions from its distribution. For example, due to its vertical spread, we can say East Asia & Pacific and Latin America and the Caribbean are the most unequal regions of the world in terms of Rule of Law in its countries. We can also appreciate that countries in the East Asia & Pacific can be clustered in two different groups, one with high levels of Rule of Law and another with medium to low levels. This pattern can also be seen in a lees dramatic way in South Asia and in the Middle East and North Africa region.
 
-I choose a coloring system based on years in order to see if the distribution of the data points along the Y-Axis is being driven by time changes. The fact that the colors are quite diverse along the vertical axis of each region says the contrary. If we change the coloring to a country-based system, we will observe that the atypical high scores and the similarly atypical low scores displayed in the Middle East and North Africa region are each of them caused
+I choose a coloring system based on years in order to see if the distribution of the data points along the Y-Axis is being driven by time changes. The fact that the colors are quite diverse along the vertical axis of each region says the contrary. If we change the coloring to a country-based system, we will observe that the atypical high scores and the similarly atypical low scores displayed in the Middle East and North Africa region are each of them caused by a single country.
 
 ``` r
 library(RColorBrewer)
