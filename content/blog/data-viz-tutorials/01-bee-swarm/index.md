@@ -196,4 +196,4 @@ ggplotly(plot)
 
 Now, that we have a dynamic and interactive plot, we can observe that all the atypical high scores in the MENA region are coming from the United Arab Emirates, while all the atypical low scores are from Egypt.
 
-And there you have it, the beauty of bee swarm plots applied to real data. Have fun plotting some examples!!
+You can further customize this new dynamic plot. However, this will be the topic of a future post. For now, here you have it, the beauty of bee swarm plots applied to real data. Have fun plotting some examples!!
