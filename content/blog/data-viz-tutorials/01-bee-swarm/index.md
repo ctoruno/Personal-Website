@@ -85,7 +85,7 @@ base <- ggplot(data = master_data.df,
 
 Once that we have set up the basics, we draw the bee swarms. This can be done by adding two types of geoms: 1) `geom_beeswarm` or 2) `geom_quasirandom`. The difference in these two geoms is the type of algorithm used to spread the data points. From a visual perspective, we can say that `geom_beeswarm` gives you a more simetric and ordered points while `geom_quasirandom` (yeah, you guess it) adds an almost random noice to the final position of the data points.
 
-Each of these geoms have an argument called `method` that can also slightly modify the way the points are placed in the plot. You can review the functions documentation an experiment with the different methods available. For this exercise I will be using the default method for the *swarm (default)* method for the `geom_beeswarm` and the *pseudorandom* method for the `geom_quasirandom`.
+Each of these geoms have an argument called `method` that can also slightly modify the way the points are placed in the plot. You can review the functions documentation an experiment with the different methods available. For this exercise I will be using the *swarm (default)* method for the `geom_beeswarm` and the *pseudorandom* method for the `geom_quasirandom`.
 
 ``` r
 # Adding a beeswarm geom
@@ -117,7 +117,7 @@ plot
 
 <img src="bee-swarm.markdown_strict_files/figure-markdown_strict/unnamed-chunk-5-1.png" width="100%"/>
 
-If you ask me, I prefer chaos. That's why I would definetely go with the pseudo random noice plot rather than with a more symmetric shape. Now, here is where the ggplot options are wonderful and is that we can now add some customization to our plot and with the ggplot options, the sky is the limit.
+If you ask me, I prefer chaos. That's why I would definetely go with the pseudo random noice plot rather than with a more symmetric shape. Now, here is where the ggplot options are wonderful. Why? Because now, we can add some customization to our plot and, honestly, with ggplot, the sky is the limit.
 
 ``` r
 # Adding an almost random noice
