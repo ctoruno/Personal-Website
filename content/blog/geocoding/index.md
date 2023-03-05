@@ -2,7 +2,7 @@
 author: Carlos A. Toruño P.
 date: "2022-12-21"
 draft: false
-excerpt: When dealing with online data, wwe frequently encounter information about locations. In this post, I will be showing you how to transform this information into geographical coordinates using R programming language.
+excerpt: When dealing with online data, we frequently encounter information about locations. In this post, I will be showing you how to transform this information into geographical coordinates using R programming language.
 subtitle: ""
 weight: 1
 title: Geocoding and visualizing address information with R
