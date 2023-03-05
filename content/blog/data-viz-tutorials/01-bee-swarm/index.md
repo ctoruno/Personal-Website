@@ -22,7 +22,7 @@ tags:
 <script src="bee-swarm_files/libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
-In this blog post I want to show you how to use bee swarm plots to show distribution of data points in a beautiful way. 
+In this blog post I want to show you how to use bee swarm plots to show distributions of data points in a beautiful way. 
 
 Usually, data distributions are shown with histograms, density, box and/or violin charts. Without a doubt, these usual alternatives are great options that deliver plenty of information. However, they fall into a complicated trade-off. Histograms and density plots are easy to understand for the general audience but they are not visually striking. On the other hand, violin and box plots can be visually striking but they require a certain level of understanding from the audience. If you are looking for a way to display the distribution of data in a very simple and visually striking way, I personally think that bee swarm plots can be very helpful.
 
