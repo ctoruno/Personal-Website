@@ -3,7 +3,7 @@ author: Carlos Alberto Toruño Paniagua
 categories:
 - R
 - Workflow
-date: "2022-10-20"
+date: "2022-11-20"
 draft: false
 excerpt: R Coding Handbook developed for the coding routines performed by the Data Analytics Unit at the World Justice Project 
 featured: true
