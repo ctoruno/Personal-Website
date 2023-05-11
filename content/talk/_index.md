@@ -11,7 +11,7 @@ cascade:
     text_link_label: View recent talks
     text_link_url: /talk/
 description: |
-  In this page you will find a list of available resources I have helped developed to help other people I work with.
+  In this page you will find a list of available resources I have helped developed.
 layout: list
 show_author_byline: true
 show_button_links: true
