@@ -2,18 +2,21 @@
 author: Carlos Alberto Toruño Paniagua
 categories:
 - Python
-- Wor
-- Data Viz
+- Streamlit
 date: "2023-05-10"
 draft: false
 excerpt: Streamlit app designed to display the most important information related to the questions/variables that you can find in the different waves of the General Population Polls between 2018 and 2022.
 featured: true
 layout: single
 links:
+- icon: door-open
+  icon_pack: fas
+  name: website
+  url: https://gpp-datamap.streamlit.app/
 - icon: github
   icon_pack: fab
   name: code
-  url: https://gpp-datamap.streamlit.app/https://gpp-datamap.streamlit.app/
+  url: https://github.com/ctoruno/wjp-datamap-app
 location: Washington, D.C
 show_post_time: true
 subtitle: Interactive Streamlit App
