@@ -130,27 +130,23 @@ Going back to the data tables that we have loaded, the first data frame in the l
 ```{python}
 master_data["boundaries"].head(10)
 ```
-
 <table width="100%">
     <style scoped>
         .dataframe tbody tr th:only-of-type {
             vertical-align: middle;
         }
-
         .dataframe tbody tr th {
             vertical-align: top;
         }
-
         .dataframe thead th {
             text-align: right;
         }
-
         table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
         }
-    </style>
+  </style>
   <thead>
     <tr>
       <th title="Field #1">FIELD1</th>
