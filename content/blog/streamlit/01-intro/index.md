@@ -131,7 +131,7 @@ Going back to the data tables that we have loaded, the first data frame in the l
 master_data["boundaries"].head(10)
 ```
 
-<table class="table table-bordered table-hover table-condensed" width="100%">
+<table width="100%">
   <thead>
     <tr>
       <th title="Field #1">FIELD1</th>
@@ -252,7 +252,7 @@ On the other hand, our second table contains information about countries and the
 master_data["roli"].head(10)
 ```
 
-<table>
+<table width="100%">
     <tr>
         <td>country</td>
         <td>year</td>
