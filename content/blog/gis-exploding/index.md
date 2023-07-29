@@ -61,7 +61,7 @@ But, to be quite academic, exploding a geometry means to break a feature into it
 
 ## Using GeoPandas to explode geometries
 
-Given that country boundaries are multipolygon features, if we were to explode China, we should end up with a geopandas data frame containing the continental part of China and all its islands, which are indeed a lot. Let's see what happens.
+Given that country boundaries are multipolygon features, if we were to explode China (the geometry, not the country), we should end up with a geopandas data frame containing the continental part of the country and all its islands, which are quite numerous. Let's see what happens.
 
 First, let's take a look at our current subset for China:
 
@@ -93,7 +93,7 @@ china[["TYPE", "WB_A3", "NAME_EN", "geometry"]]
 
 
 
-As we can observe, we currently have a single row geo dataframe and its geometry states that it is a multipolygon. That means that if we explode this subset, we should en up with a geo data frame listing all of its polygons. Let's see if that's the case:
+As we can observe, we currently have a single-row geo-dataframe and its geometry states that it is a multipolygon. That means that if we explode this subset, we should en up with a geo data frame listing all of its polygons. Let's see if that's the case:
 
 
 ```python
@@ -303,7 +303,7 @@ china_ex.plot(column="geometry").set_axis_off()
     
 
 
-As we can see, we now have a geo data frame with 71 rows. However, there is no way for us to know which feature is what. If we plot the data and differentiate by different features, we are only able to distinguish the three larger ones: continental China, the island of Taiwan, and the island of Hainan, respectively. Therefore, we need to highlight the second larger polygon. We can do this by estimating the area and subsetting
+As we can see, we now have a geo data frame with 71 rows. However, there is no way for us to know which feature is what. If we plot the data and color different features with different colors, we are only able to distinguish the three larger ones: continental China, the island of Taiwan, and the island of Hainan, respectively. Therefore, we need to highlight the second larger polygon. We can do this by estimating the area and subsetting
 
 
 ```python
@@ -376,7 +376,7 @@ china_exsort.iloc[1:2]
 </table>
 
 
-As we can observe, Taiwan is the feature with row index 31 in the data frame. We could confirm this visually by plotting this feature alone. Again, I'm assuming that you have outstanding geography notions. But if you don't, here you have the mapped feature that we got and a google maps image of Taiwan. If they look alike, probably we are doing things right.
+As we can observe, Taiwan is the feature with row index 31 in the data frame. We could confirm this visually by plotting this feature alone. Again, I'm assuming that you have outstanding geography notions my dear padawan. But if you don't, here you have the mapped feature that we got and a google maps image of how should Taiwan look like . If they look alike, probably we are doing things right.
 
 ```python
 china_exsort.iloc[1:2].plot().set_axis_off()
@@ -396,9 +396,9 @@ china_exsort.iloc[1:2].plot().set_axis_off()
   </div>
 </div>
 
-We have been succesfully been able to identify Taiwan, what do we do now? Well, we basically need to rejoin all the other islands back to China, remove the China/Taiwan feature from our boundaries data and add the exploded data with China and Taiwan as sepaarate features. Sounds comple, right? Well, it's actually quite straightforward. Let's go step by step.
+We have been succesfully been able to identify Taiwan, what do we do now? Well, we basically need to rejoin all the other islands back to China, remove the China/Taiwan feature from our boundaries data, and add the exploded data with China and Taiwan as separate features. Sounds complex, right? Well, it's actually quite straightforward. Let's go step by step.
 
-First, we first need to manually input Taiwan's counntry data as follows:
+First, we need to manually input Taiwan's country data as follows:
 
 
 ```python
@@ -408,7 +408,7 @@ china_ex.at[31, 'NAME_EN'] = "Taiwan"
 china_ex.at[31, 'WB_NAME'] = "Taiwan"
 ```
 
-Once we have inputed that data, we can dissolve the geometries to form a simplified data frame. If you are wondering what is to dissolve a geometry, it's bassically the opposite of exploding. We want to aggregate all those islands to the same feature as continental China. Except Taiwan, of course.
+Once we have inputed that data, we can dissolve the geometries to form a simplified data frame. If you are wondering what do I mean by dissolving, it's bassically the opposite of exploding. Still not great naming skills, I know. We want to aggregate (or dissolve) all those islands to the same feature as continental China. Except for Taiwan, of course.
 
 
 ```python
@@ -489,7 +489,7 @@ china_taiwan
 </table>
 
 
-Once that we have China and Taiwan as different features, we proceed to append this new data to our world boundaries. However, don't forget to drop the previous China feature!!!
+Once that we have China and Taiwan as different features, we proceed to append this new data to our world boundaries. Don't forget to drop the previous China feature!!!
 
 
 ```python
@@ -499,8 +499,6 @@ import pandas as pd
 raw_boundaries = (pd.concat([raw_boundaries.loc[raw_boundaries["WB_A3"] != "CHN"],
                              china_taiwan],
                              ignore_index = True))
-
-raw_boundaries[raw_boundaries["WB_REGION"] == "EAP"].plot().set_axis_off()
 ```
 
 This way, we have been able to split China and Taiwan as separate features without having to change our source data and just with a few lines of code.
