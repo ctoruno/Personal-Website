@@ -49,11 +49,11 @@ china.plot().set_axis_off()
 
 I hope your geography knowledge is outstanding, but in case you are a little bit lost...
 
-Do you see that small island in the southeast, that's Taiwan! And it should not be displayed in this map because we were ONLY subsetting the geometries that belong to country code CHN, in other words, the People's Republic of China. And given that there is nno listed country code for Taiwan in the documentation, we can assume that these data follow the "One China" policy. Sad, I know. So, how do we solve this?
+Do you see that small island in the southeast? That's Taiwan! And it should not be displayed in this map because we were ONLY subsetting the geometries that belong to country code CHN, in other words, the People's Republic of China. And given that there is no listed country code for Taiwan in the documentation, we can assume that these data follow the "One China" policy. Sad, I know. So, how do we solve this?
 
 ## Possible solutions
 
-The most logical solution that many of you would propose is to use a subnational boundaries or a ADM-1 level data. Sadly (but not surprising), the World Bank does not supply an official licensed ADM-1 data for subnational boundaries. Then, why don't we use any other data source like our beloved [geoBoundaries](https://www.geoboundaries.org/)? As it happens, I need an official source for the map generator app, preferrably from the United Nations or the World Bank. Don't ask too many questions.
+The most logical solution that many of you would propose is to use a subnational boundaries or a ADM-1 level data. Sadly (but not surprisingly), the World Bank does not supply an official licensed ADM-1 data for subnational boundaries. Then, why don't we use any other data source like our beloved [geoBoundaries](https://www.geoboundaries.org/)? As it happens, I need an official source for the map generator app, preferrably from the United Nations or the World Bank. Don't ask too many questions.
 
 Some of you will suggest me to solve this issue using ArcGIS or QGIS. However, and let's be honest, I refuse to do this without coding. So, I just asked Google about how could I split a geometry and I quickly found something called "*exploding*". Which, is a terrible name to be honest.
 
