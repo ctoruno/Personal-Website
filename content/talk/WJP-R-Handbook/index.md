@@ -12,7 +12,7 @@ links:
 - icon: door-open
   icon_pack: fas
   name: website
-  url: https://ctoruno.quarto.pub/wjp-r-handbook/
+  url: https://wjp-r-handbook.netlify.app/
 - icon: github
   icon_pack: fab
   name: code
