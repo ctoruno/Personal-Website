@@ -33,17 +33,19 @@ The two articles that I cited before can give you a way better overview of the p
 
 Let's start with the basics. Computers have their own language to read (and even understand) human characters. You might be thinking on how Neo saw the world in The Matrix, which is not too far from the truth actually. Text characters are read by computers in bits (zeros and ones)... so yes, all data types are just numbers in the very raw state of things but that's not the purpose of this blog post. Now, back to the point. If you only have 1s and 0s to identify characters, you need a kind of system to translate a sequence of binary numbers into text. This is the role of **character encoding sets**. As their name suggest, these encoding sets are just a collection of rules on how to encode graphical characters into a binary sequence. In other words, a dictionary between the human and the computer way of seeing the characters. 
 
-Back in the good old days, the American Standard Code for Information Interchange system, or most commonly known as **ASCII**, was the golden rule for encoding text characters. ASCII uses binary sequences (bytes) to build a unique code (or code point) for each character. When the ASCII system was being developed, most computers were running on a 8-bits architecture. What does this mean? Well, imagine that your mother tongue is binary and you only have zeros and ones to form your words. Where does one word ends and another one begins? You need to set a rule where everybody understands that every fixed number of digits (in this case 8), you have another "_word_". So, in a 8-bits architecture, how many "_words_" (code points) can you have? A very limited number, specially if the 8th bit is reserved for computational procedures. More specifically, you could only form 127 code points with 8-bits sequences (_The last bit/digit was reserved for computational processes, it's a long story, read the articles_).
+Back in the good old days, the American Standard Code for Information Interchange system, or most commonly known as **ASCII**, was the golden rule for encoding text characters. ASCII uses binary sequences (bytes) to build a unique code (or code point) for each character. When the ASCII system was being developed, most computers were running on a 8-bits architecture. What does this mean? Well, imagine that your mother tongue is binary and you only have zeros and ones to form your words. Where does one word ends and another one begins? You need to set a rule where everybody understands that, after every fixed number of digits (in this case 8), you have another "_word_". So, in a 8-bits architecture, how many "_words_" (code points) can you have? A very limited number. More specifically, you could only form 127 code points with 8-bits sequences (_The last bit/digit was reserved for computational processes, it's a long story, read the articles_).
 
 <img src="binary-encoding.png" width="100%"/>
 
-Due to the limited number of numerical codes you could have within a 8-bits architecture, the system only encoded characters from the English alphabet. You can check the full encoding table of the core 127 ASCII graphemes in [this website](https://www.asciitable.com/).
+Due to the limited number of codes you could have within a 8-bits architecture, the ASCII system only encoded characters from the English alphabet. You can check the full encoding table of all the 127 ASCII graphemes in [this website](https://www.asciitable.com/).
 
 As an example, the word Sunday has six text characters (or graphemes): S-u-n-d-a-y. According to the table, the upper case letter-S is coded as 83 (decimal notation). And how do you express 83 in binary? Exactly, as 1010011. This was the dictionary that allowed humans and computers to communicate. See the image below to see the equivalences.
 
 <img src="ascii-example.png" width="100%"/>
 
-As soon as the computational capacity started to increase, people around the world started to add more and more code points on top of the ASCII system. In theory, this was cool, but the problem was that everyone started doing it at the same time all around the world. As a result, we ended up with a whole bunch of systems in which the first 128 characters were always the same and equivalent to the original ASCII, but from the code point 129th onwards, that was carnival of all sorts. All these systems became to be known as Extended ASCII. As an example, code point 215 in the CP00860 Portuguese system was equivalent to character "τ", but that same code point was equivalent to character "ﻫ" in the CP00864 Arabic system. What a mess, right? Nonetheless, it used to work quite well because most computers within the same country were using the same encoding system. So everything was fine... until the internet came. 
+As soon as the computational capacity started to increase, people around the world started to add more and more code points on top of the ASCII system. In theory, this was cool, but the problem was that everyone started doing it at the same time all around the world. As a result, we ended up with a whole bunch of systems in which the first 127 characters were always the same and equivalent to the original ASCII, but from code point 128th onwards, that was carnival of all sorts.
+
+All these systems became to be known as Extended ASCII. As an example, code point 215 in the CP00860 Portuguese system was equivalent to character "τ", but that same code point was equivalent to character "ﻫ" in the CP00864 Arabic system. What a mess, right? Nonetheless, it used to work quite well because most computers within the same country were using the same encoding system. So everything was fine... until the internet came. 
 
 Nowadays you can receive a document from Sweeden in a matter of seconds, regardless of where you are. So just try to imagine the confussion that people had whenever they shared word documents with different encoding systems across the globe. This is when Unicode was born.
 
@@ -51,10 +53,10 @@ Nowadays you can receive a document from Sweeden in a matter of seconds, regardl
 
 At some point, a group of people got tired of the mess of having all these different encoding systems and they decided to create a new system that would standardize all the available text characters introduced by previous systems. As they would highligh in [their website](https://unicode.org/standard/WhatIsUnicode.html):
 
-> Unicode provides a unique number for every character,
-> no matter what the platform,
-> no matter what the program,
-> no matter what the language.
+> _Unicode provides a unique number for every character,<br>
+> no matter what the platform,<br>
+> no matter what the program,<br>
+> no matter what the language._
 
 Despite of its benefits, Unicode didn't have a warm welcoming to the digital world. You see, when UNICODE started to standardize all these characters across human languages and systems, the world (and specifically the USA) got used to their default extended ASCII systems. Programs were not able to recognize these new code points defined by the UNICODE Standard. So they were facing the typical QWERTY problem. QWERTY problem you say?
 
