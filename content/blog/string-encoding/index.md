@@ -81,7 +81,7 @@ Try to imagine the following scenario. You have managed to collect data all arou
 <img src="data-desc.png" width="100%"/>
 <br>
 
-Everything is fine. But then, your boss asks you to do a very simple task. We now need to geocode every single observation. If you are wondering what geocoding is, you can check this [post](https://www.carlos-toruno.com/blog/geocoding/). You are aware that Stata is not your best friend for dealing with GIS and APIs, so you decide to switch to Python and open the data using [Pandas](https://pandas.pydata.org/). Surprise!! you got your first **RED FLAG!!**. As you can read from the Python console, there is a decoding error that is not allowing you to even read the data. **UNICODE DECODE ERROR**.
+Everything is fine. But then, your boss asks you to do a very simple task. We now need to geocode every single observation - If you are wondering what geocoding is, you can check this [post](https://www.carlos-toruno.com/blog/geocoding/). You are aware that Stata is not your best friend when dealing with GIS and APIs, so you decide to switch to Python and open the data using [Pandas](https://pandas.pydata.org/). Surprise!! you got your first **RED FLAG!!**. As you can read from the Python console, there is a decoding error that is not allowing you to even read the data. **UNICODE DECODE ERROR**.
 
 <img src="unicode-error.png" width="100%"/>
 <br>
@@ -91,7 +91,7 @@ You decide to go back to STATA and take a look at the data and you realize that 
 <img src="colombia.png" width="100%"/>
 <br>
 
-Not bueno. This is actually known as "[_Mojibake_](https://en.wikipedia.org/wiki/Mojibake)" and it is the result of forcing a character to be read in the wrong encoding system. I have bad news for you, the geocoding task, is not gonna be as easy as you thought because the most common APIs for georeferencing data such as Google Maps and Open Street Maps won't be able to accurately target the location if the inputed strings have Mojibake. Actually, any kind of text processing technique that you would like to apply, such stemming and tokenization, will fail.
+Not bueno. This is actually known as "[_Mojibake_](https://en.wikipedia.org/wiki/Mojibake)" and it is the result of forcing a character to be read in the wrong encoding system. I have bad news for you, the geocoding task, is not gonna be as easy as you thought because the most common APIs for georeferencing data such as Google Maps and Open Street Maps won't be able to accurately target the location if the inputed strings have Mojibake. Actually, any kind of text processing technique that you would like to apply, such as stemming and tokenization, will fail.
 
  There are three possible ways of dealing with this issue:
 
@@ -109,4 +109,4 @@ Not bueno. This is actually known as "[_Mojibake_](https://en.wikipedia.org/wiki
 
 3. In the worst case scenario, you can just start replacing Mojibakes in a manual way if you know for sure their correct values. Depending on the complexity of your data, this can be straightforward (unlikely) or the new Mission Impossible film.
 
-Tschüss!!
+_Tschüss_!!
