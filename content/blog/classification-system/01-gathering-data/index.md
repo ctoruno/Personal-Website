@@ -19,7 +19,9 @@ I recently started working on a project based entirely on text data from news ar
 
 ## What's an News API?
 
-To answer this question, we first need to know what is an API. Technically speaking, an API, or Application Programming Interface, is a set of rules and tools that allows different software applications to communicate with each other. They are used for multiple purposes such as hide complex processes, extend apps functionalities or, access data from a third party source. In our specific case, we want to send a data request to a server. Our request will contain information on the specific data we want to gather. However, we have no idea on how the data is structured or handle by the server. Therefore, our request will be processed by an API serving as an intermediary. If you would like to know a bit more about APIs, I would personally recommend the following video:
+Ok, maybe we are going too fast Toreto. Let's start with something easier. What's an API? Technically speaking, an API, or Application Programming Interface, is a set of rules and tools that allows different software applications to communicate with each other. They are used for multiple purposes but the one we are interested in is that we can use APIs to access data from a third party source. 
+
+In our specific case, we want to send a data request to a server in the web. Our request will contain information on the specific data we want to gather. However, we have no idea on how this data is structured or even handle by the server. Therefore, our request will be processed by an intermediary, and that intermediary is the API. I know this might sound super complex and technical at the beginning. I personally found the intro of the following video very easy and useful to understand how do APIs work. So, just take a look, it is a short video indeed.
 
 <iframe width="100%" height="315" src="https://www.youtube.com/embed/OVvTv9Hy91Q?si=eSkR5gxqZjNV3LFY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -31,11 +33,13 @@ First of all, I'm not telling you the latest finding of humanity. What I'm tryin
 
 ## Managing you API key
 
-The most important thing you need to know in order to start making dat requests is your API key. API keys are used to track and control how the API is being used, prevent abuse, ensure that users are authorized to access the resources, and, most importantly, charge you for its use. As a result, your API key is as important as your personal credentials for using a service. The Newsdata AI keyy can be found in your personal dashboard once that you login in their website as shown below:
+The most important thing you need to know in order to start making dat requests is your API key. API keys are used to track and control how the API is being used, prevent abuse, ensure that users are authorized to access the resources, and, most importantly, charge you for its use. Having said this, your API key is as important as your personal bank information. Don't go around the web publishing it.
+
+The Newsdata API key can be found in your personal dashboard once that you login in their website (... again, I'm not gonna show you mine...):
 
 <img src="api.png" width="100%"/>
 
-Once that you have access to your API key, you use it to authenticate yourself directly from your script or notebook as follows:
+Once that you have access to your API key, you use it to authenticate yourself directly from your python script or notebook as follows:
 
 
 ```python
@@ -45,9 +49,11 @@ from newsdataapi import NewsDataApiClient
 api = NewsDataApiClient(apikey = "NEWSDATA_API_KEY")
 ```
 
-Now, we face a dilemma. I just told you that your API key is personal and as important as your personal credentials. But at the same time, you need to use it in your code to authenticate yourself. For several reasons, you code might need to be public or at least accesible to other people. Therefore, how do we keep it secret? For this, we use environment variables. Environment variables are variables outside of a program that store configuration information. This way, we can hide certain sensible information such as our API Key from our python script but it will still be accesible for our program. For this, you need to do the following:
+Now, we face a dilemma. I just told you that your API key is personal and as important as your personal credentials. But at the same time, you need to use it in your code to authenticate yourself. For several reasons, you code might need to be public or at least accesible to other people. Therefore, how do we keep it secret? For this, we use environment variables. 
 
-1. First, you need to create a hidden file called `.env`.
+Environment variables are located outside of a program but they are loaded as part of the program environment. This way, we can hide certain information from our python script (such as our API Key) but it will still be accesible when running our program. For this, you need to do the following:
+
+1. First, you need to create a hidden file called `.env` in the same folder where you have your python script or notebook.
 2. Once that you created your file, you store you API Key in that file (**and remember the name you use to store that info!!**). For example:
 
 
@@ -239,9 +245,13 @@ data[0:10]
 </table>
 
 
-Ok, at this point, we need to pay attention to a couple of things. First, it appears that each row is a news article. You can further confirm this by taking a look at the information within the `results` column (as I will do below). Second, as stated in the `totalResults` column, we were able to retrieve 98 news articles that mention the **World Justice Project**. However, the response that we got only has 50 rows. Dear 3 readers, it took me a while (30 minutes) to figure out what was going on here and I hope that this highlights the importance of reading the documentation to all of you.
+Ok, at this point, we need to pay attention to a couple of things. First, it appears that each row is a news article. You can further confirm this by taking a look at the information within the `results` column (as I will do below). Second, as stated in the `totalResults` column, we were able to retrieve 98 news articles that mention the **World Justice Project**. However, the response that we got only has 50 rows (I'm only showing the first 10!!). 
 
-As mentioned in the [API documentation](https://newsdata.io/documentation/#pagination), you will receive responses from the API in the form of pagination. In other words, when your info request involves a "_large_" set of results, the API will break down this list of results into a maximum of 50 articles per response. In our previous request, we got a total of 98 articles, therefore we got a maximum of of 50 articles. Then how do we access the other 48 articles? This is where the `nextPage` column comes into action. If your request returns more than 50 articles, you will receive a code to go to the next "page" of results. In rder to acess the next 50 articles, you would have to pass that page code into the `page` paraemter when calling the method for a second time.
+>_Dear 3 readers, it took me a while (~30 minutes) to figure out what was going on here and I hope that this highlights the importance of reading the documentation to all of you. With love, Carlos_.
+
+As mentioned in the [API documentation](https://newsdata.io/documentation/#pagination), you will receive responses from the API in the form of pagination. In other words, when your info request involves a "_large_" set of results, the API will break down this list of results into a maximum of 50 articles per response. In our previous request, we got a total of 98 articles, therefore we got a maximum of 50 articles. Then how do we access the other 48 articles?
+
+This is where the `nextPage` column comes into action. If your request returns more than 50 articles, you will receive a code to go to the next "page" of results. In order to access the next 50 articles, you would have to pass that page code into the `page` parameter when calling the method for a second time. Follow the example bellow:
 
 
 ```python
@@ -525,7 +535,9 @@ results.head(5)
 
 
 
-As you can see, the data we received for each articles is quite wide. We have access to the title, the URL, a short, description, the body of the article, among other variables. If we explore the language column of our results, we will notuice that there is a noticeable presence of articles in English. This is due to the fact that the keyword we are searching for is in English. Remember that the API will search for an exact match to that keyword ("World Justice Project"). However, in other languages, news articles might refer to the World Justice Project by making use of a translated name. For example, in [this news article](https://www.latribuna.hn/2023/10/31/honduras-mejora-en-indice-global-de-estado-de-derecho/) they use the spanish translation "Proyecto de Justicia Mundial". To make sure we are gathering all the available news articles, we will have to request the API to search for matches on the English keywords but also their translations to other languages. We can do this manually by using the Google Translate or the DeepL website. Nevertheless, I'm gonna show you how to automatically translate text by making use of the [`translators` library](https://github.com/UlionTse/translators).
+As you can see, the data we received for each articles is quite wide. We have access to the title, the URL, a short, description, the body of the article, among other variables. If we explore the language column of our results, we will notuice that there is a prominent presence of articles in English. This is due to the fact that the keywords we are searching for are in English. 
+
+Remember that the API will search for an exact match to those keywords ("_World Justice Project_"). However, in other languages, news articles might refer to the _World Justice Project_ by making use of a translated name. For example, in [this news article](https://www.latribuna.hn/2023/10/31/honduras-mejora-en-indice-global-de-estado-de-derecho/) they use the spanish translation "_Proyecto de Justicia Mundial_". To make sure we are gathering all the available news articles, we will have to request the API to search for matches on the English keywords but also their translations to other languages. We can do this manually by using the Google Translate or the DeepL website. Nevertheless, I'm gonna show you how to automatically translate text by making use of the [translators library](https://github.com/UlionTse/translators).
 
 ## The _translators_ library
 `Translators` is a python library that makes use of the official APIs for a wide range of translation services such as Google, Bing, DeepL, Niutrans, among many others. Their aim is to bring "free, multiple, enjoyable translations to individuals". Nevertheless, some services might require you to have an API key for their service (e.g. DeepL). You can install the library by running the following line of code in your terminal:
@@ -555,9 +567,6 @@ def keytrans(key, targetlang):
     )
     return result
 ```
-
-    Using region District of Columbia server backend.
-    
     
 
 Once that we have the python function defined, we can make use of list comprehensions to translate the list of keywords to other languages. I will restrict the target languages to chinese, arabic, russian, french, german, spanish, portuguese, italian, japanese, korean, hindi, and indonesian.
@@ -590,13 +599,13 @@ keywords
      '世界正义项目',
      'مؤشر سيادة القانون',
      'مشروع العدالة العالمية',
-     'Индекс верховенства закона',
+     'Индекс верховенства права',
      'Проект мировой справедливости',
-     'Indice de droit',
+     'Indice sur l'État de Droit',
      'Projet mondial de justice',
      'Rechtsstaatlichkeit Index',
      'World Justice Project',
-     'Índice de regla de derecho',
+     'Índice de Estado de derecho',
      'Proyecto de Justicia Mundial',
      'Índice de Estado de Direito',
      'Projeto de Justiça Mundial',
@@ -613,7 +622,7 @@ keywords
 
 
 
-Now that we have our full list of keywords in multiple languages, we can use our News API to request all news articles that have exact mentions to those keywords. We will proceed as before, we will define a function that gathers a specific keyword(s) and returns a response object from the Newsdata Servers. The function will check for pagination in case our request returns more than 50 news articles and it will return a pandas data frame with all the results available. Once we have a function defined, we use a list comprehension to apply over our full list of keywords and then we concatenate all of our results into a single pandas data frame.
+Now that we have our full list of keywords in multiple languages, we can use our News API to request all news articles that have exact mentions to those keywords. We will proceed as before, we will define a function that gathers a specific keyword(s) and returns a response object from the Newsdata Servers. The function will check for pagination in case our request returns more than 50 news articles and it will return a pandas data frame with all the results available. Once we have a function defined, we use a list comprehension to apply it over our full list of keywords and then we concatenate all of our results into a single pandas data frame.
 
 
 ```python
@@ -657,7 +666,7 @@ master = pd.concat(fetch_data)
 master_unique = master.drop_duplicates(subset = ["article_id"])
 ```
 
-We can perform a quick exploratory analysis to see the top sources and languages in our data using the `plot()` wrapper as follows:
+We were able to retrieve over 200 news articles. We can perform a quick exploratory analysis to see the top sources and languages in our data using the `plot()` wrapper as follows:
 
 
 ```python
