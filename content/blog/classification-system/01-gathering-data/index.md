@@ -17,7 +17,7 @@ I recently started working on a project based entirely on text data from news ar
 
 <img src="featured.png" width="100%"/>
 
-## What's an News API?
+## What's a News API?
 
 Ok, maybe we are going too fast Toreto. Let's start with something easier. What's an API? Technically speaking, an API, or Application Programming Interface, is a set of rules and tools that allows different software applications to communicate with each other. They are used for multiple purposes but the one we are interested in is that we can use APIs to access data from a third party source. 
 
