@@ -25,5 +25,5 @@ subtitle: Interactive Streamlit App
 title: ROLI Map Generator
 ---
 
-This app is still under development. Therefore, customization is limited at the moment. However, the data presented in this app is up-to-date according to the latest datasets published by the World Justice Project in its website.
+Streamlit App for drawing choropleth maps using the Rule of Law Index data published by The World Justice Project. The data presented in this app is up-to-date according to the latest datasets published by the World Justice Project in its website.
 
