@@ -7,7 +7,7 @@ categories:
 - Data Cleaning
 date: "2023-12-20"
 draft: false
-excerpt: Online tools for assisting the cleaning and harmonization of data.
+excerpt: Online tools for assisting the cleaning and harmonization of data collected through polling and expert codings.
 featured: true
 layout: single
 links:
