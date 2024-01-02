@@ -27,7 +27,7 @@ tags:
 title: "EU Lawyer Data"
 ---
 
-![Formspree Logo](overview.png)
+![](featured.png)
 
 ## The [EU Lawyer Dataset](https://carlos-toruno.shinyapps.io/EU-Lawyer-Data/) is the result of collecting information on almost 350,000 lawyers in the EU area.
 

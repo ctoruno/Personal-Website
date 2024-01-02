@@ -30,7 +30,7 @@ tags:
 title: "Colombia 2022: A twitter companion"
 ---
 
-![Formspree Logo](overview.png)
+![](featured.png)
 
 ## [Colombia 2022: A twitter companion](https://carlos-toruno.shinyapps.io/colombia-2022-dashboard/) is the result of collecting over 3 million tweets related to all the presidential pre-candidates for the 2022 Colombian General Elections.
 
