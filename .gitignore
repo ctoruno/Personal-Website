@@ -18,3 +18,4 @@ content/collection/.DS_Store
 static/.DS_Store
 assets/.DS_Store
 resources/.DS_Store
+content/blog/classification-system/04-llm-api/.env
