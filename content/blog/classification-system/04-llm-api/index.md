@@ -375,7 +375,7 @@ Finally, I will provide some specific instructions telling the model what to do 
 >
 >}}
 
-I will make use of [Markdown](https://www.markdownguide.org/basic-syntax/) syntax such as headers (#) and lists to structure and pass the information to the model. You can check the FULL instruction prompt that I'm using for the first stage [here](https://www.carlos-toruno.com/blog/classification-system/04-Langchain-GeminiPro/instructions_stage_1.txt).
+I will make use of [Markdown](https://www.markdownguide.org/basic-syntax/) syntax such as headers (#) and lists to structure and pass the information to the model. You can check the FULL instruction prompt that I'm using for the first stage [here](https://www.carlos-toruno.com/blog/classification-system/04-llm-api/instructions_stage_1.txt).
 
 ## Accesing LLMs through their API endpoints
 
@@ -467,7 +467,7 @@ For example, we modify our _context prompt_ to incorporate the new objective:
 >social sciences, and law that you have. Once you have read the news article, you will proceed to determine the extent to which the events 
 >described in the news article are related to each pillar._
 
-For our _instructions prompt_ we will be using a rather large text that spans over 4,000 words. However, you can check the full text of the prompt [here](https://www.carlos-toruno.com/blog/classification-system/04-Langchain-GeminiPro/instructions_stage_2.txt). Having these new inputs, we can send a new request in the same way we did before:
+For our _instructions prompt_ we will be using a rather large text that spans over 4,000 words. However, you can check the full text of the prompt [here](https://www.carlos-toruno.com/blog/classification-system/04-llm-api/instructions_stage_2.txt). Having these new inputs, we can send a new request in the same way we did before:
 
 
 ```python
