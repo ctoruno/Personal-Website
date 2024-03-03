@@ -272,7 +272,7 @@ You can open these prompt templates and see how they are trying to provide an ac
 > _Now, given the following news article:_<br>
 > _News title: {headline}_<br>
 > _News summary: {summary}_<br>
-> _News body: {body}_<br>
+> _News body: {body}_
 
 Everytime that we send a news article to Gemini, we have to replace the `{headline}`, `{summary}`, and `{body}` parts of the template with the actual headline, summary, and content that we have in our `master_data`. **It is very important that the .txt file that we are reading contain the "_replaceable_" parts within curly brackets in order for the prompt managing tools from Langchain to work as expected**. In my previous post, we were doing this using the `format()` method for strings in Python. However, Langchain provides a similar tool for managing and customizing prompts through the `ChatPromptTemplate` module. We can define our context template as a **_System Role_** message, and our instructions template as a **_Human Role_** using the `from_messages()` method. To understand how role management works in text generation models, you can check [this page](https://platform.openai.com/docs/guides/text-generation/chat-completions-api) from the OpenAI's official documentation. For our _stage 1_ exercise, we could define the prompt template as follows:
 
@@ -313,7 +313,7 @@ However, the model could still block some of our news articles by some undefined
 Finally, we have asked the model to:
 
 >_Use the following JSON format to answer:<br>_
->{{<br>
+>{{ <br>
 >&nbsp;&nbsp;&nbsp;&nbsp;_rule_of_law_related: [Model Answer]_<br>
 >}}
 
