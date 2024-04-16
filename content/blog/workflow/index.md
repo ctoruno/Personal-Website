@@ -11,7 +11,7 @@ tags:
 - data workflow
 ---
 
-I use the word **workflow** a lot when talking to people from other teams. I use it so often, that they seem to be used to it by now. However, from time to time, one person will approach me and ask: "_ok, but what do you mean by workflow?_". You wont believe it, but everytime that I talked about this concept, I knew what I was referring to, but I never had it so clear to be able to explain it. As my dear friend Santiago once told me...
+I use the word **workflow** a lot when talking to people from other teams. I use it so often, that they seem to be used to it by now. However, from time to time, one person will approach me and ask: "_ok, but what do you mean by workflow?_". You wont believe it, but everytime that I talked about this concept, I knew what I was referring to, but I never had it so clear to be able to explain it. As my dear friend [Santiago](https://github.com/aspardog) once told me...
 
 > "_The workflow is an intangible and transversal concept to everything that we do. Which is a fancy way of saying that we have no idea wtf it is_." (Pardo, 2024)
 
