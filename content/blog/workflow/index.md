@@ -85,7 +85,7 @@ If you take a look at the [master routine](https://github.com/WJP-DAU/eu-gpp-rep
 
 <img src="modules.png" width="100%"/>
 
-This way, the project is easier to read, follow, and mantain. However, spliting you code into smaller pieces is not the only approach into making it shorter, you can also introduce a functional approach to your code.
+This way, the project is easier to read, follow, and mantain. However, spliting your code into smaller pieces is not the only approach into making it shorter, you can also introduce a functional approach to your code.
 
 #### What is repetitive, can be functional
 
@@ -116,7 +116,7 @@ Are you worried that the other members of your team might alter the peace and ba
 
 Have I mentioned the README file? WRITE THAT README FILE!!!
 
-The more democratic you make your code, the easier will be life for everyone else in the team. Trust me in this one.
+The more democratic you make your code, the easier will be life for everyone else in the team. Trust me in this one. Also, at this point I also have to give some credit to Ana María, who has always asked us (and everyone) to document everything we do.
 
 Finally, and this is not an essential part of the workflow, but it is an essential part of our philosophy... we publish everything. You can find, clone, and play with the code of EVERYTHING that we do from our [Github pages](https://github.com/ctoruno). From country reports to our crazy web apps. This is not just because we firmly believe in transparency but also because it is a heavy incentive for us to improve and have a beautiful code public. At the end of the day, you wouldn't post an ugly picture in your instagram, right?
 
