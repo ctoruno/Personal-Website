@@ -5,7 +5,7 @@ draft: false
 excerpt: Web Scraping is a increasingly popular tool to gather information. In this article, I go through the very basics to understand what is it and how does it work.
 subtitle: ""
 weight: 1
-title: A very brief introduction to Web Scrapping
+title: A very brief introduction to Web Scraping
 subtitle: Basic concepts and process
 layout: single
 tags:
