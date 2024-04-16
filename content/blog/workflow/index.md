@@ -51,7 +51,7 @@ We have come around with 6 basic principles that have come to be the basic pilla
 2. Git first, SharePoint next
 3. Break down your code
 4. What is repetitive, can be refactored
-4. One-click to rule to them all
+4. One-click to rule them all
 5. Document everything, publish everything
 
 #### An intuitive filing and naming system
@@ -97,7 +97,7 @@ In order to apply this functional approach, you have to start "_thinking ahead_"
 
 Refactoring refers to the process of restructuring existing code without changing its external behavior. This is done in order to improve the efficiency (and aesthetics) of your code in order to make it easier to read, understand, and mantain.
 
-#### One-click to rule to them all
+#### One-click to rule them all
 
 This one is easy... your code should be, at best, a one-click routine... for **ANYONE**, not just you. In other words, the user should be able to run it with very very very few changes. Hopefully, none. And that's it. No further explanations needed. If you need to modify more than three parameters for your code to run, you need to go back to the previous two points.
 
