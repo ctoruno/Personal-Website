@@ -5,14 +5,14 @@ draft: false
 excerpt: In the third part of this series, I use the Selenium library to locate web elements and extract information from dynamic web sites.
 subtitle: ""
 weight: 3
-title: Web Scrapping using Selenium
+title: Web Scraping using Selenium
 subtitle: A step-by-step Guide
 layout: single
 tags:
 - Web Scraping
 ---
 
-In my [previous post](https://www.carlos-toruno.com/blog/webscrapping/02-requests/) about webscrapping with Python, I talked a bit about how to use the [Requests](https://requests.readthedocs.io/en/latest/) and [Beautiful Soup library](https://www.crummy.com/software/BeautifulSoup/) libraries in order to extract the information from the web and we applied these tools to gather information from the [Polish National Registry of Lawyers](https://rejestradwokatow.pl/adwokat). However, requests might fall short when we have to extract information from dynamically generated content that use internal APIs or JavaScript to display the information. Under this scenario, we need to expand our set of tools in order to overcome these obstacles. One of such alternatives is to use a web driver. Therefore, in this post, I will be explainign how to use a web driver to locate HTML elements in a website and I will use it to extract lawyers information from [The German Lawyers' Association](https://anwaltauskunft.de/magazin).
+In my [previous post](https://www.carlos-toruno.com/blog/webscrapping/02-requests/) about webscraping with Python, I talked a bit about how to use the [Requests](https://requests.readthedocs.io/en/latest/) and [Beautiful Soup library](https://www.crummy.com/software/BeautifulSoup/) libraries in order to extract the information from the web and we applied these tools to gather information from the [Polish National Registry of Lawyers](https://rejestradwokatow.pl/adwokat). However, requests might fall short when we have to extract information from dynamically generated content that use internal APIs or JavaScript to display the information. Under this scenario, we need to expand our set of tools in order to overcome these obstacles. One of such alternatives is to use a web driver. Therefore, in this post, I will be explainign how to use a web driver to locate HTML elements in a website and I will use it to extract lawyers information from [The German Lawyers' Association](https://anwaltauskunft.de/magazin).
 
 <img src="featured.png" width="100%"/>
 
