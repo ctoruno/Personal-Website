@@ -14,7 +14,7 @@ links:
 - icon: door-open
   icon_pack: fas
   name: website
-  url: https://nicaragua-dictators-speech.onrender.com/
+  url: https://nds-dash.onrender.com/
 - icon: github
   icon_pack: fab
   name: code
