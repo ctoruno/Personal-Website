@@ -23,7 +23,7 @@ In this post, I will be going through how to link your Dropbox account with Stre
 - **Web Apps require space on the web**: As storage needs increase, you might need more storage capacity, and depending on the application's complexity and traffic, potentially more powerful server resources as well. Separating the storage from the computing resources is a modern solution to achieve scalability.
 - **Sensitive information**: If you are using [Streamlit Cloud](https://streamlit.io/cloud) to deploy your apps online, you need to link your app to a public GitHub repository. This can be a little bit troublesome because you may need to ensure that some data is still only accessible to certain users.
 
-Ok, but why Dropbox? That's a good question. You can definetely use other cloud storage services such as [AWS S3](https://aws.amazon.com/pm/serv-s3/?nc1=h_ls) and [OneDrive] (https://www.microsoft.com/en-us/microsoft-365/onedrive/online-cloud-storage). I'm just using Dropbox as a reference for this post because I found it very easy to implement if you are searching for storage solutions for the first time.
+Ok, but why Dropbox? That's a good question. You can definetely use other cloud storage services such as [AWS S3](https://aws.amazon.com/pm/serv-s3/?nc1=h_ls) and [OneDrive](https://www.microsoft.com/en-us/microsoft-365/onedrive/online-cloud-storage). I'm just using Dropbox as a reference for this post because I found it very easy to implement if you are searching for storage solutions for the first time.
 
 Without further ado, let's start with this endeavor.
 
