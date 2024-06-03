@@ -309,7 +309,7 @@ print("2. Click \"Allow\" (you might have to log in first).")
 print("3. Copy the authorization code.")
 ```
 
-    1. Go to: https://www.dropbox.com/oauth2/authorize?response_type=code&client_id=kelmemq5fhwlx1b&token_access_type=offline
+    1. Go to: https://www.dropbox.com/oauth2/authorize?response_type=code&client_id=XXXXX&token_access_type=offline
     2. Click "Allow" (you might have to log in first).
     3. Copy the authorization code.
     
