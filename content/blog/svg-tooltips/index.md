@@ -30,7 +30,7 @@ Now, if you have been following my blog for the past months, you will know that 
 
 <img src="example_1.svg" width="100%"/>
 
-In the chart above, each circle represents a region from each country. The chart looks great, simple, and aesthetic. What's the problem? There was no way for you to know what each circle meant without me explaining it. More importantly, even if I placed a text explaining that in the chart, you have no idea to know what's the exact percentage for what region. We could come up with some static solution as adding some text boxes. However, adding over 100 text boxes might be challenging and it will extremely reduce the aesthetic of the chart. I consider myself a minimalist after all. But just for the sake of chaos, here you have a visual of how 100 text boxes would look like:
+In the chart above, each circle represents a region from each country. The chart looks great, simple, and aesthetic. What's the problem? There was no way for you to know what each circle meant without me explaining it. More importantly, even if I placed a text explaining that in the chart, you have no idea to know what is the exact percentage for what specific region. We could come up with some static solution as adding some text boxes. However, adding over 100 text boxes might be challenging and it will extremely reduce the aesthetic of the chart. I consider myself a minimalist after all. But just for the sake of chaos, here you have a visual of how 100 text boxes would look like:
 
 <img src="example_2.svg" width="100%"/>
 
@@ -46,16 +46,16 @@ If you watched the video that I shared above, you might have heard that one adva
 When a website has a SVG image, the browser processes the SVG file by parsing its XML tree structure and renders the image in real time. Because of this, we should be able to insert some JavaScript into the XML tree of the SVG to add some interactivity. Why does it has to be JavaScript? Because JavaScript is the language of the web. It is the only programming language that is natively supported by all web browsers for client-side scripting. This means that JavaScript can run directly within any browser without the need for any additional plugins or interpreters. And that is exactly what we are going to do.
 
 ## A two-steps solution
-I made a great effort to expose the problem and the logic behind the solution. Now, I will be explaining a step-by-step on how to achieve a more elegant and stand-alone solution for the example above. In a nutshell, we will be working on two fronts. First, we are going to produce our chart again. But this time, we will add some "_special_" aesthetics to help us identify the elements (circles and text boxes) in the XML vector. Once we have our caffeinated over-labeled chart, we will use the `lxml` python library to navigate through the XML tree. We will be adding/moving elements around the tree while also modifying their attributes. Therefore, it is highly important that you know the basics of XML and how it works. If you are familiar with HTML or you have been following my wenscrapping posts, you will have no issues at getting the grasp of how a XML tree works. If not, I would suggest you to watch the following video:
+I made a great effort to expose the problem and the logic behind the solution. Now, I will be explaining a step-by-step on how to achieve a more elegant and stand-alone solution for the example above. In a nutshell, we will be working on two fronts. First, we are going to produce our chart again. But this time, we will add some "_special_" aesthetics to help us identify the elements (circles and text boxes) in the XML tree. Once we have our caffeinated over-labeled chart, we will use the `lxml` python library to navigate through the XML tree. We will be adding/moving elements around the tree while also modifying their attributes. Therefore, it is highly important that you know the basics of XML and how it works. If you are familiar with HTML or you have been following my webscraping posts, you will have no issues at getting the grasp of how a XML tree works. If not, I would suggest you to watch the following video:
 
 <iframe width="100%" height="345" src="https://www.youtube.com/embed/KeLiQXqVgMI?si=syGhpZG-RiF3IX_F" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ### Re-drawing the chart
-The chart that I shared above is a type of categorical scatterplot, it was drawn using the `ggplot` library in R, but you can use any other tool at hand to produce the base SVG (matplotlib, seaborn). If we inspect the SVG file using a text editor such as VSCode, we will see that the XML tree contains elements such as lines, circles, and paths:
+The chart that I shared above is a type of categorical scatterplot, it was drawn using the `ggplot` library in R, but you can use any other tool at hand to produce the base SVG (matplotlib, seaborn, plots.jl). If we inspect the SVG file using a text editor such as VSCode, we will see that the XML tree contains elements such as lines, circles, and paths:
 
 <img src="circle-elements.png" width="100%"/>
 
-The XML tree has exactly **27 line elements**, one for each country denoting the bars that connect the circles, and around **110 circle elements**, one for each subnational region. All of these elements are sorted in the same way that they were passed to the ggplot function when the chart was drawn. Because the data frame was alphabetically sorted first by country and then by region ID, the first line element belongs to Austria, the second one to Belgium, and so on until reaching Sweden. Under the same logic, the first circle belongs to the Austria's AT1 region, the second one to Austria's AT2 region, and so on until reaching Sweden's SE3 region. Until here, everyuthing seems quite straightforward and we only need to be careful on how the data is sorted when passing it to the plotting function.
+The XML tree has exactly **27 line elements**, one for each country denoting the bars that connect the circles, and around **110 circle elements**, one for each subnational region. All of these elements are sorted in the same way that they were passed to the ggplot function when the chart was drawn. Because the data frame was alphabetically sorted first by country and then by region ID, the first line element belongs to Austria, the second one to Belgium, and so on until reaching Sweden. Under the same logic, the first circle belongs to the Austria's AT1 region, the second one to Austria's AT2 region, and so on until reaching Sweden's SE3 region. Until here, everything seems quite straightforward and we only need to be careful on how the data is sorted when passing it to the plotting function.
 
 The problem resides when we try to locate the tooltips (text boxes). There is one per region, so, you might think that we will have the same amount of circle elements. Sadly, we don't. The tooltips are plotted using polygons and path elements. We do have around 110 polygon elements corresponding to each one of the boxes. However, we have around **3,600 path elements**. Crazy, right? Well, as it happens, each path element corresponds to a single letter inside the tooltips. Given that the tooltips contain information such as the region names, the amount of path elements for each tooltip will differ from each other.
 
@@ -67,7 +67,7 @@ We could rely on the order in which everything is plotted to identify elements a
 
 Every circle element has four attributes: cx and cy are the circle coordinates, r refers to the radius of the circle, and the we have the style attributes that contain information on the aesthetics. Inside the style attributes, we have a color code for filling the circle "#46B5FF" and another for the thin border around the circle "#A6A6A6". The fill color will depend on the value that we are plotting, for our case example this is the percentage of respondents that believe that Narnia is real. However, the border is arbitrary and fixed for all the circles. The key is to use this style attribute to identify to which specific region each circle and path element belongs to without having to rely on how the data was sorted.
 
-To do this, I generated a set of 110 unique colors for each region. This set contains 110 slight variations of the "#A6A6A6" color. All of these variations have unique color codes, but the variations are so small that they are basically imperceptible to the human eye. I produced a second set of unique colors for the tooltips that contains slight variations of the "#1E212B" dark grey color for the tooltips. I used the following code for producing these color sets:
+To achieve this, I generated a set of 110 unique colors for each region. This set consists of 110 slight variations of the “#A6A6A6” color. While each variation has a unique color code, the differences are so subtle that they are almost imperceptible to the human eye. Additionally, I created a second set of unique colors for the tooltips, with slight variations of the dark grey “#1E212B” color. Here is the code I used to produce these color sets:
 
 
 ```python
@@ -270,7 +270,7 @@ for nuts, color_code in region_borders.items():
             element.set("id", f"{nuts}_circle")
 ```
 
-We proceed with a similar approach with the tooltips. However, given that the tooltips have multiple elements associated, it is easier if we first create a **regional** (g) element that will have all the associated polygons and paths within. However, this means that we will have to create "_bags_" to group all the associated elements together. We do this "_bagging_" because it is easier to target a single bag than targeting multiple elements each one that we want the tooltips to appear and disappear.
+We proceed with a similar approach with the tooltips. However, given that the tooltips have multiple elements associated, it is easier if we first create a **regional** (g) element that will have all the associated polygons and paths within. In other words, we will create "_bags_" to group all the associated elements together. We do this "_bagging_" because it is easier to target a single bag than targeting multiple elements when asking the tooltips to appear and disappear.
 
 
 ```python
@@ -300,7 +300,7 @@ for nuts, color_code in region_labels.items():
             nuts_group_element.append(element)
 ```
 
-Once that we have all the path elements packed together in regional bags, we proceed to hide them by default. Take into account that some elements might not be present in the data:
+Once that we have all the path elements packed together in regional bags, we proceed to hide them by default. Take into account that some elements might not be present in the data due to imputations:
 
 
 ```python
@@ -314,7 +314,7 @@ for nuts in region_colors["region_id"].to_list():
 ```
     
 
-Now, we add some trigger events as `onmouseover` and `onmouseout` attributes. The idea is that every time that the user hoovers over a circle, the visibility attribute of its respective tooltip will be modified to "visible" and then set back to "hidden" when the mouse leaves the circle. Please note that the events will be defined as JavaScript functions within a **script** tag.
+Now, we add some trigger events as `onmouseover` and `onmouseout` attributes. The idea is that every time that the user hoovers over a circle, the visibility attribute of its respective tooltip will be modified to "visible" and then set back to "hidden" when the mouse leaves the circle area. Please note that the events will be defined as JavaScript functions within a **script** tag at the end of the XML tree.
 
 
 ```python
