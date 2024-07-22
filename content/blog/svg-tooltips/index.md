@@ -377,21 +377,6 @@ script_element = ET.fromstring(script)
 root.append(script_element)
 ```
 
-    HR06_circle not found!!!
-    DK02_circle not found!!!
-    DK03_circle not found!!!
-    FI19_circle not found!!!
-    FRB_circle not found!!!
-    FRC_circle not found!!!
-    FRD_circle not found!!!
-    FRF_circle not found!!!
-    FRH_circle not found!!!
-    FRM_circle not found!!!
-    DEE_circle not found!!!
-    NL2_circle not found!!!
-    PL8_circle not found!!!
-    
-
 Finally, we proceed to save the SVG as a new file:
 
 
@@ -401,4 +386,4 @@ tree.write('example_with_tooltips.svg', xml_declaration=True, encoding='utf-8')
 ```
 
 At the end, we should end up with a chart with interactive tooltips as follows:
-<img src="example_with_tooltips.svg" width="100%"/>
+<object type="image/svg+xml" data="example_with_tooltips.svg" width="100%"></object>
