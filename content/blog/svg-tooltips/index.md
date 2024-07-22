@@ -312,24 +312,6 @@ for nuts in region_colors["region_id"].to_list():
     else:
         print(f"{nuts}_tooltip not found!!!")
 ```
-
-    HR06_tooltip not found!!!
-    DK02_tooltip not found!!!
-    DK03_tooltip not found!!!
-    FI19_tooltip not found!!!
-    FRB_tooltip not found!!!
-    FRC_tooltip not found!!!
-    FRD_tooltip not found!!!
-    FRF_tooltip not found!!!
-    FRH_tooltip not found!!!
-    FRM_tooltip not found!!!
-    DEE_tooltip not found!!!
-    NL2_tooltip not found!!!
-    PL8_tooltip not found!!!
-    
-
-    C:\Users\ctoruno\AppData\Local\Temp\ipykernel_41708\1236213194.py:4: FutureWarning: The behavior of this method will change in future versions. Use specific 'len(elem)' or 'elem is not None' test instead.
-      if tooltip:
     
 
 Now, we add some trigger events as `onmouseover` and `onmouseout` attributes. The idea is that every time that the user hoovers over a circle, the visibility attribute of its respective tooltip will be modified to "visible" and then set back to "hidden" when the mouse leaves the circle. Please note that the events will be defined as JavaScript functions within a **script** tag.
