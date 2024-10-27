@@ -14,7 +14,7 @@ links:
 - icon: door-open
   icon_pack: fas
   name: website
-  url: https://roli-mapgen.streamlit.app/
+  url: https://roli-map-generator.streamlit.app/
 - icon: github
   icon_pack: fab
   name: code
