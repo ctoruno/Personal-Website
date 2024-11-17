@@ -1,0 +1,294 @@
+---
+title: Introducing the EU Rule of Law Tracker
+subtitle: Methodological Supplement
+author:
+  - name: Carlos A. Toruño Paniagua
+    corresponding: true
+    email: ctoruno@worldjusticeproject.org
+    roles:
+      - Senior Data Analyst
+      - Research
+    affiliations:
+      - The World Justice Project
+keywords:
+  - Rule of Law
+  - Large Language Model
+  - News tracker
+abstract: |
+  This paper introduces the EU Rule of Law Tracker, a project aimed at systematically tracking, classifying, and analyzing social and political events related to the rule of law across the 27 member states of the European Union. While existing indices, such as the World Justice Project's Rule of Law Index, rely on expert assessments and public perceptions to evaluate key dimensions of the rule of law, they may not fully capture the connection between perceptions and tangible events. Leveraging news archives and advances in machine learning and artificial intelligence, particularly Large Language Models (LLMs), this initiative seeks to complement perception-based metrics by building a comprehensive event database. This document details the data extraction process, classification methods, use of LLMs for analysis, and future directions for the project ...
+plain-language-summary: |
+  The EU Rule of Law Tracker uses AI to track and analyze rule of law events across the EU. ...
+date: last-modified
+bibliography: references.bib
+citation:
+  container-title: EU Rule of Law Tracker
+number-sections: true
+cap-location: top
+reference-location: margin
+---
+
+## Introduction
+
+Tracking the conditions surrounding the rule of law is essential for understanding the medium- and long-term evolution of social and political institutions within a country or region. Currently, there are several measures and indices aimed at assessing the rule of law globally, one of the most prominent being the Rule of Law Index (ROLI) produced by the World Justice Project (WJP). Like most similar measurements, the ROLI relies heavily on expert assessments and public perceptions, evaluating eight key dimensions of the rule of law: constraints on government powers, absence of corruption, open government, fundamental rights, order and security, regulatory enforcement, civil justice, and criminal justice [@botero2011measuring]. These perception-based metrics provide valuable insights into how various aspects of the rule of law are viewed. However, they may not always link changes in perceptions to specific, tangible events. Given the complexity of the rule of law and the limited pool of experts qualified to assess it, having a compendium of concrete events—such as judicial rulings, electoral processes, protests, and government actions—becomes increasingly valuable. Such a database, when properly compiled and organized, can help to assess, contextualize, and validate perception-based findings, providing a more comprehensive and reliable understanding of the state of the rule of law.
+
+There have been various initiatives aimed at developing tools to track rule of law events in the past [@hertogh2024empirical; @barendrecht2011rule]. However, the complexity of the concepts involved, overlapping definitions, data limitations, time constraints, among other challenges, have made this a difficult endeavor. Despite these obstacles, recent advancements in fields such as machine learning and artificial intelligence, combined with greater accessibility to large data pools, open new possibilities to produce more accurate and efficient results at lower costs.
+
+In this document, we are introducing the *EU Rule of Law Tracker*, an initiative that is focused on tracking, classifying, analyzing, and producing insights on social and political events related to the Rule of Law in the 27 members of the European Union. This initiative makes use of news articles archives and Large Language Models (LLM) in order to produce a systematized database for researchers to assess and validate perceptions on the rule of Law in the targeted countries.
+
+The document is structured in seven sections. After this brief introduction, we introduce the conceptual framework that will guide the classification, analysis, structure, and organization of our data. In the third section, we discuss the process and logic followed for the extraction and translation of the input data. The fourth section is focused on the use of LLMs to help us classify the extracted data. The fifth section covers the use of LLMs to help us summarize the information into brief media reports that can complement and facilitate the work of researchers when having to assess changes in people's perceptions. The sixth section explain the use of some Natural Language Processing (NLP) techniques to get further insights from the final database. Finally, the last section provides some brief overview on the next steps and potential extensions.
+
+![Overview of the Process](images/Massive-News-Country-Reports.png){#fig-flow}
+
+## Conceptual Framework[^1]
+
+[^1]: The concepts outlined in this documents are largely based on a preliminary version of the *European Union Subnational Indicators: Conceptual and Measurement Framework* document developed by The World Justice Project. For more information please consult the document here.
+
+### Macro-concepts
+
+The term Rule of Law refers to a system in which law is able to impose meaningful restraints on the state and individual members of the ruling elite. It refers to a governance principle in which all persons, institutions, and entities, public and private, including the State itself, are accountable to laws that are publicly promulgated, equally enforced, and independently adjudicated, and which are consistent with international human rights norms and standards.
+
+We extend this concept further by defining the Rule of Law as a rules-based system in which the following four universal principles are upheld. First, the government and its officials and agents are accountable under the law. Second, the laws are clear, publicized, stable, and fair, and protect fundamental rights, including the security of persons and property. Third, the process by which the laws are enacted, administered, and enforced is accessible, fair, and efficient. Lastly, access to justice is provided by competent, independent, and ethical adjudicators, attorneys or representatives, and judicial officers who are of sufficient number, have adequate resources, and reflect the makeup of the communities they serve.
+
+Given the previous definitions, we can infer that the Rule of Law is a multidimensional concept that extends over eight basic pillars: limited government powers; absence of corruption; order and security; fundamental rights; open government; effective regulatory enforcement; access to civil justice; and an effective criminal justice.
+
+From a political science perspective, these factors draw on four basic ideas related to the relationship between the state and the civil society: the checks and balances on the government's power, the effectiveness of the state in performing its basic functions, participation and collaboration between the state and its citizens, and absence of arbitrary abuse by the authority.
+
+We define Justice as the ethical, philosophical idea that people are to be treated impartially, fairly, properly, and reasonably by the law and by arbiters of the law, that laws are to ensure that no harm befalls another, and that, where harm is alleged, a remedial action is taken - both the accuser and the accused receive a morally right consequence merited by their actions.
+
+Justice also refers more specifically to the set of institutions and services that allow for the impartial mediation and adjudication of disputes arising from the violation or conflicting interpretations of laws, including the enforcement of decisions or agreements reached through their operation.
+
+Finally, we define Governance as the mechanisms, processes, and structures through which public institutions operate and make decisions for the welfare and benefit of their respective communities. This encompasses the way governments and local authorities are organized, how policies are formulated and implemented, how resources are allocated and managed, and how public services are delivered to citizens.
+
+### Pillars of the rule of law
+
+#### Constraints on Government Powers
+
+Measures the extent to which those who govern are bound by law. It comprises the means, both constitutional and institutional, by which the powers of the government and its officials and agents are limited and held accountable under the law. It also includes non-governmental checks on the government’s power, such as a free and independent press. Additionally, it measures the absence of authoritarianism, which includes the accountability of the Chief Executive, and its respect for checks and balances. In more detail, this pillar is related to the following topics:
+
+-   The active and reactive transparency of legislative bodies (senate, parliament, assemblies), its ability to impose disciplinary measures to government officials, and if there is representation of disadvantaged groups, as well as citizen participation. It also measures if the opposition can express its opinions and if it exercises its functions of overseeing and investigating the government.
+-   The independence of the judiciary, by means of having sufficient resources and professional judges, with adequate rights and competencies, as well as its ability to impose disciplinary measures on government officials.
+-   The independence and effectiveness of oversight institutions, such as the Supreme Audit Institution or comptroller, anticorruption authority, human rights institution, the office of the ombudsman, and prosecution services, as well as if civil servants are free from political pressure, and are effective in implementing public policies.
+-   Whether elections are free of barriers of entry, intimidation, corruption, and criminality, in accordance with the law, with equitable access to resources, free from misinformation, secure from cyberattacks and with protection of personal. It also measures the effectiveness and independence of the electoral authority.
+-   The effectiveness of non-governmental checks on the government’s power, such as the media, CSOs, political parties, activists, and citizens. It includes their effective exercise of the freedoms of assembly, association, opinion, and expression, and the rights to petition and civic engagement.
+-   The accountability of the Chief Executive or the Head of Government, and its respect for the constitutional order, the law-making process, the outcome and quality of elections, civil liberties, political opponents, as well as the independence of the judiciary and oversight institutions. It also measures the likelihood of sanctions to officials for misconduct.
+-   Whether members of the legislature, judiciary, elected leaders or high-ranking government officials, public sector employees, and police officers, who abuse their power are sanctioned for misconduct.
+
+#### Abscense of Corruption
+
+Measures the control of corruption in various forms: bribery in administrative and political proceedings, graft, embezzlement, fraud, payroll fraud, asset misappropriation and skimming, nepotism, favoritism, patronage, illegal campaign financing, electoral fraud and vote buying. In more detail, this pillar is related to the following topics:
+
+-   The prevalence of bribery in the delivery of public services and regulations, as well as in the political process.
+-   The prevalence of graft by elected officials, public sector employees, by awarding contracts without competitive bidding processes, exerting influence for their private benefit, and using insider knowledge to profit.
+-   The prevalence of embezzlement or misappropriation of public funds, payroll fraud, asset misappropriation and skimming, as well as of nepotism, favoritism, and patronage.
+-   The prevalence of nepotism and favoritism by elected officials, public sector employees, judges, and prosecutors. It also measures the prevalence of patronage by elected officials.
+-   The prevalence of corruption in elections, including illegal campaign financing, manipulation of elections, and vote buying.
+
+#### Open Government
+
+Measures the openness of government defined by the extent to which a government shares information, empowers people with tools to hold the government accountable, and fosters citizen participation in public policy deliberations while maintaining an open civic space. This factor measures whether basic laws and information on legal rights are publicized and evaluates the quality of information published by the government. In more detail, this pillar is related to the following topics:
+
+-   Whether requests for information from the public to government agencies and institutions are granted, and if these requests are granted within a reasonable time period, with complete and pertinent answers, at a reasonable cost and without having to pay a bribe for the information.
+-   Whether people are aware of their right to information, and whether relevant records are accessible to the public upon request.
+-   The effectiveness of non-governmental checks on the government’s power, as well as the openness of the civic space and the extent of citizen participation. It includes the effective exercise of the freedoms of assembly, association, opinion, and expression, and the rights to petition and civic engagement.
+
+#### Fundamental Rights
+
+This pillar recognizes that a system of positive law that fails to respect core human rights established under international law is at best “rule by law,” and does not deserve to be called a rule of law system. This aspect focuses on rights that are firmly established under the Charter of Fundamental Rights of the European Union, but only includes a relatively small number of rights which are most closely related to rule of law concerns. In more detail, this pillar is related to the following topics:
+
+-   The protection of rights related to dignity, including the prohibition of torture, slavery and forced labor.\
+-   The protection of rights related to freedom, including freedom of thought, conscience, religion, peaceful assembly, association, opinion, and expression, as well as the right to property and to asylum.
+-   Whether civil society organizations are free to comment on government policies, without fear of retaliation. In addition, it also measures if quarantines and lockdowns are applied proportionately, not discriminatory, with limited duration and in accordance with the law.
+-   Whether independent media, civil society organizations, members of the opposition, opposing factions of the governing party, activists, whistleblowers, and individuals are free to report and comment on government policies, without fear of retaliation.
+-   The extent to which the media publish credible fact-checked information, and if its editorial content is independent from political influences, as well as if it can conduct investigations and expose cases of corruption without facing surveillance, harassment, threats, legal actions, or administrative sanctions.
+-   The extent to which the government allows the formation or operation of CSOs, and the formation or operation of opposition parties.
+-   Whether the government respects the property rights of people and corporations, refrains from the illegal seizure of private property, and provides adequate reasons and compensation when property is legally expropriated. It also measures if the process for transferring a property is simple and quick. In addition, it measures if foreign investors receive fair and equitable treatment from the government, and the effective enforcement of anti-squatting laws and intellectual property rights.
+-   Whether the government respects the right to asylum and refugees can move freely within the host country, have access to legal work and state services such as education, accommodation, meals, healthcare, and cash benefits, as well as legal documentation and economic opportunities.
+-   The protection of rights related to equality, including equality before the law, and absence of discrimination based on socio-economic status, gender, ethnicity, religion, national origin, sexual orientation, or gender identity.
+-   The protection of rights related to solidarity, including labor rights such as workers’ right to information, consultation, collective bargaining, access to placement services, and protection in the event of unjustified dismissal, as well as the prohibition of child labor.
+-   The protection of rights related to citizens´ rights, including political rights such as the right to vote and to stand as a candidate at European Parliament and municipal elections, to information, petition, movement, and of residence.
+-   The protection of rights related to justice, including the right to effective remedy and to a fair trial, presumption of innocence, and to defense, as well as rights of the accused including principles of legality and proportionality of criminal offenses and penalties, and the right not to be tried or punished twice.
+
+#### Security
+
+Measures the assurance of the security of persons and property. Security is one of the defining aspects of any rule of law society and is a fundamental function of the state. It is also a precondition for the realization of the rights and freedoms that the rule of law seeks to advance. We are excluding armed conflict from this pillar. In more detail, this pillar is related to the following topics:
+
+-   The extent to which people feel safe and secure in their city, town, or village, and in their neighborhood.
+-   The extent to which the State is able to keep crime and violence to minimum levels.
+
+#### Regulatory Enforcement and Enabling Business Environment
+
+Measures the extent to which regulations are fairly and effectively implemented and enforced. Regulations, both legal and administrative, structure behaviors within and outside of the government. This factor does not assess which activities a government chooses to regulate, nor does it consider how much regulation of a particular activity is appropriate. Rather, it examines how regulations are implemented and enforced. In more detail, this pillar is related to the following topics:
+
+-   The extent to which the legal framework for businesses is clear, accessible, and predictable, as well as the respect for property rights.
+-   Whether the government respects the property rights of people and corporations, refrains from the illegal seizure of private property, and provides adequate reasons and compensation when property is legally expropriated. In addition, it measures if foreign investors receive fair and equitable treatment from the government, and the effective enforcement of anti-squatting laws and intellectual property rights.
+-   Whether the process for transferring a property is simple and quick.
+-   The extent to which the government audits and inspections are conducted in accordance with the law and are free of corruption; if complaint mechanisms are simple, accessible, and cost-effective, and if regulation authorities are impartial, and if they sanction violations.
+-   Whether environmental and labor regulation authorities sanction violations, such as occupational safety and business license or zoning violations.
+
+#### Civil Justice
+
+Measures whether ordinary people can resolve their grievances through formal institutions of justice in a peaceful and effective manner, as well as in accordance with generally accepted social norms rather than resorting to violence or self-help. Access to civil justice requires that the system be accessible, affordable, effective, impartial, and culturally competent. In more detail, this pillar is related to the following topics:
+
+-   Whether justice institutions help prevent legal and justice needs. It also measures whether authorities tolerate illegal activities such as squatting, street vending or informal labor arrangements.
+-   Whether people are aware of their rights, formal justice, and alternative justice mechanisms, and know where to get information and advice when facing a legal problem.
+-   Whether can access and afford legal advice and representation; and can access the court system without incurring unreasonable fees.
+-   Whether the civil justice system is impartial and free of discrimination, corruption and undue influence from the government and private interests.
+-   The effectiveness and timeliness of the enforcement of civil justice decisions and judgments in practice.
+-   Whether alternative dispute resolution mechanisms (ADRs) are available, accessible, affordable, impartial, timely, effective, enforceable, and free of corruption and undue influence from the government and private interests.
+
+#### Criminal Justice
+
+Evaluates a country’s criminal justice system. An effective criminal justice system is a key aspect of the rule of law, as it constitutes the conventional mechanism to redress grievances and bring action against individuals for offenses against society. An assessment of the delivery of criminal justice should take into consideration the entire system, including the police, lawyers, prosecutors, judges, and prison officers. In more detail, this pillar is related to the following topics:
+
+-   Whether criminal investigations are effective, timely, impartial, and free of corruption and undue influence from criminal organizations and political and private interests.
+-   The effectiveness of prosecutors in investigating crimes, and if pre-trial proceedings are timely, outcome-oriented, impartial, and free of corruption and undue influence from political and private interests.
+-   Whether trials are timely, outcome-oriented, impartial, and free of corruption and undue influence from political and private interests.
+-   Whether alternative dispute resolution mechanisms (ADRs) are available, accessible, affordable, impartial, timely, effective, enforceable, and free of corruption and undue influence from the government and private interests.
+-   Whether victim’s rights are effectively guaranteed, including treatment with respect, absence of discrimination, timely and sufficient information, and protection.
+-   Whether the basic rights of criminal suspects are respected, including the presumption of innocence and the freedom from arbitrary arrest and unreasonable pre-trial detention. It also measures whether criminal suspects are able to access and challenge evidence used against them, whether they are subject to abusive treatment, and whether they are provided with adequate legal assistance. In addition, it measures whether the basic rights of prisoners are respected once they have been convicted of a crime.
+-   Whether the prison system guarantees conditions of safety and order and respects the rights of people deprived of their liberty. It also measures the absence of corruption and the effectiveness of the prison system in reducing recidivism.
+
+## Extraction and Translation
+
+The first step in designing the *EU Rule of Law Tracker* was to identify, gather, and compile the information that would serve as the primary input for the tracker. Several inputs such as official records, social media, academic research, and think tanks publications were considered. Several sources, including official records, social media, academic research, and think tank publications, were considered. After a careful review, it was decided to use news articles for the pilot version of the tracker due to several advantages.
+
+First, multiple data archives offer harmonized databases for a wide range of newspapers from around the world, often accessible via Application Programming Interfaces (APIs). These databases are frequently updated, providing near real-time access to the latest events. In contrast, alternative data sources, such as academic publications and official records, generally have longer research, editorial, and publishing times, resulting in less timely information compared to most newspapers.
+
+Second, news articles come from a wide variety of media outlets. Each with its own editorial line and cultural context. Given the political nature of the events that are usually associated to the Rule of Law, it is of highly importance to ensure the diversity of viewpoints so our final outcome have a more nuanced understanding of how the events are shaping the political and social environment across different countries.
+
+Third, newspapers create a historical record of events that can be tracked over time. They also offer a resource that is easily accessible to the general public. Moreover, competition for readership among newspapers often drives journalists to provide additional research, background information, and context, enhancing the quality of reporting.
+
+On the other hand, relying on news articles as the primary data source for tracking democracy and rule of law events also presents some drawbacks. The most significant challenges are the risks of media bias, subjectivity, and sensationalism. Additionally, the quality and consistency of data can vary significantly between sources, posing risks related to misinformation, lack of depth, and disparities in regional coverage.
+
+To mitigate these potential risks, we limited our selection to 211 newspapers. The list was curated based on five key criteria to ensure balanced and reliable coverage:(i) editorial influence, (ii) historical significance, (iii) audience reach, (iv) diversity of editorial perspectives, and (v) regional representation. Additionally, the newspapers were categorized to identify *priority* and *high-priority* sources within each of the 27 member states of the European Union. Of the 211 sources, 153 were designated as priority, while 84 were labeled as high-priority. The full list of data sources can be found in @sec-sources. Due to limited resources during the news extraction phase, only high-priority sources were used in the pilot version of the tracker.
+
+Having identified and delimited the pool of data sources for the study, we needed a way to access and download the news articles for the tracker. For this purpose, we made use of a news API service called [Newscatcher](https://www.newscatcherapi.com/). A news API is a programming interface that allows users to access and retrieve news articles from a wide variety of sources. By using [HTTP calls](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods), we are able to access the data archive compiled by the company and retrieve news articles based on some query parameters. The Newscatcher API allows to search news based on dates, languages, sources, URL, among other optional parameters. Additionally, their data archive tracks all of our 84 high-priority newspapers.
+
+However, it is not possible to directly query for news articles solely related to our definition of the rule of law. As a workaround, we developed queries using specific keywords associated with our definition of the rule of law and its dimensions, as well as broader concepts like justice and governance. Our strategy focused on performing a *wide search* rather than a *narrow search*. In other words, we intentionally used broad, general keywords to ensure that our results included a wide range of articles, even at the risk of retrieving some unrelated content. This approach was chosen to avoid excluding potentially relevant articles. The process of refining the search results through text classification using Large Language Models (LLMs) is covered in detail in @sec-class.
+
+For the extraction, we defined a total of 137 keywords. These keywords are divided into 123 language-based keywords and 14 country-based institutional keywords. The language-based keywords encompass common nouns that are shared across countries that shared the same official language. For example "*Kongress*" is the German word for Congress and it can be equally used in news articles from newspapers in Germany as well by newspapers in Austria. However, even when these two countries share the same language, they might refer to some institutions in different ways. For example, "*Verfassungsgerichtshof*" is how Austrian newspapers might refer to the Constitutional Court, while German newspapers might refer to it as "*Bundesverfassungsgericht*".
+
+Depending on the language of publication of each targeted newspaper, we will use a combination of language- and country-based keywords (see @fig-keywords). For example, the newspaper "*De Standaard*" in Belgium publishes news in Dutch. Therefore, we will use the 123 language-based keywords in Dutch (also used in some newspapers from the Netherlands), as well as the 14 Belgium institutions names in Dutch (unique for Belgium). On the other hand, the Belgium newspaper "*Le Soir*" publishes their news in French. As a result, we use the 123 french keywords (also used for Newspapers in France), as well as the 14 Belgium institution names in French (unique for Belgium newspapers). The definition of keywords was made in English and then manually translated to the other 22 languages used by the rest of the targeted newspapers.[^2] The full list of keywords can be consulted in @sec-keys.
+
+[^2]: The translation of these keywords involved a combination of desk research, translation engines, and native speaker consultations when possible.
+
+![Keywords used for extraction](images/keywords.png){#fig-keywords width="75%"}
+
+Due to quota limitations at the time of the extraction,[^3] a time range of eight months was targeted for most countries with a few exceptions (see @tbl-extraction). A total of 904,944 news articles were gathered from the Newscatcher data archive. The data consisted of tabular data in JSON format. The response object returned by the API contained some information from the news articles such as the published date, title, content, language, URL, and if the article was coming from an opinion column or a regular section of the newspaper. The code used for the extraction phase can be found in the [Extraction notebook](https://ctoruno.github.io/eu-rol-tracker/notebooks/0_EU_news_gathering_1-preview.html) in the supplementary materials to this manuscript.
+
+[^3]: At the time of the extraction, Newscatcher was transitioning from version 2 to version 3 of their API. While the v2 version of their API was able to go further back to even 2 years in the past, the v3 version was only able to capture news articles from the past 3 months. Due to technology transitions, we had a limit of 20,000 calls for their version 2, which is equivalent to a total of 800,000 news articles
+
+{{< embed notebooks/tables.ipynb#tbl-extraction >}}
+
+The titles and content of the news articles were returned in their original publication languages, resulting in a diverse collection of information in 23 different languages: Bulgarian, Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Hungarian, Italian, Latvian, Lithuanian, Maltese, Polish, Portuguese, Romanian, Slovak, Slovene, Spanish, and Swedish. While this linguistic diversity highlights the cultural richness of the region, it also presents challenges for accurate classification and text analysis.
+
+The LLMs used in this project are multilingual models, but their accuracy in text classification can vary across languages [@unanue2023t3l]. To ensure consistency during the classification process and to facilitate the use of NLP techniques in the data analysis phase, we decided to translate all the data into a single language. Since most LLMs are primarily trained on English data, we chose English as the target language for translation. To guarantee the highest quality, we used the Google Translation API to translate all of our text data. The code used for the translation phase can be found in the [Translation notebook](https://ctoruno.github.io/eu-rol-tracker/notebooks/1_EU_news_translation_1-preview.html) in the supplementary materials to this manuscript.
+
+A total of 808,429 news articles, equivalent to 93.9% of the total number of articles extracted, were successfully translated. This lost of information was due to several reasons such as API connection failures, news articles with empty content, corrupted text data, unidentified source language, among other reasons, unusually long text, among other reasons. Column 4 in @tbl-translation contains information on the success rate per country during the translation process.
+
+{{< embed notebooks/tables.ipynb#tbl-translation >}}
+
+## Classification {#sec-class}
+
+The extraction and translation phase provided us with a diverse database of news articles from a wide range of sources. However, as previously mentioned, there is a significant risk of including articles that narrate events unrelated to our definitions of Rule of Law, Justice, and Governance. To meet the project’s objectives, it is crucial that the system can not only differentiate between articles that are relevant to our macro-concepts and those that are not, but also accurately classify the relevant articles according to the specific pillars of the rule of law that they are related to. In order to achieve this, we made use of the text classification capabilities of Large Language Models such as [GPT](https://platform.openai.com/docs/concepts) and [Gemini](https://ai.google.dev/gemini-api/docs?_gl=1*1ixp628*_ga*NzAxMDUzNTUyLjE3MDQ0NTQ0NzA.*_ga_P1DBVKWT6V*MTcyNTkwNDYyMi40OC4wLjE3MjU5MDQ2MjIuNjAuMC41MjU1MDg0ODg.).[^4]
+
+[^4]: GPT refers to a family of models developed by OpenAI, while Gemini refers to a family of models developed by Google. During the pilot phase of this study, we tested the *GPT-4-Turbo* and the *Gemini-1.5* models, respectively.
+
+We divided the classification phase into two stages. In the first stage, the system aims to categorize news articles based on whether they are related to our concepts of Rule of Law, Justice, and Governance, or not. Additionally, the system will identify the location where the events described in the article are taking place. During this stage, the total number of news articles that were successfully translated are passed to the model.
+
+In the second stage, the system will further classify the relevant articles according to which specific pillars of the rule of law the events are related to. This stage focuses exclusively on articles that were previously classified as related to our macro-concepts and that describe events occurring within one of the 27 member states of the European Union.
+
+### Prompt definition
+
+In both stages, we defined two prompt templates to pass to the LLM: a system context and the instructions. The system context is a type of prompt used to set the context or guide the behavior of the model during a conversation. In our specific case, the system context was used to establish the role of the model as an assistant, provide general instructions and some background information of the purpose of the tasks. The instruction template contained the conceptual framework, the full text of the article, some key point to take into account, as well as specific instructions on how to structure the answers (JSON format). The full text of the prompts used can be found in the [Prompt templates: Text Classification notebook](https://ctoruno.github.io/eu-rol-tracker/notebooks/prompts_classification-preview.html) in the supplementary materials to this manuscript.
+
+These prompts were the results of a dynamic and iterative process of [prompt engineering](https://platform.openai.com/docs/guides/prompt-engineering/strategy-write-clear-instructions). More specifically, we randomly selected a batch 100 news articles and then we proceeded to classify them using the GPT and Gemini models along with a project-specific [LangChain workflow](https://www.langchain.com/).[^5] Once that the models finished classifying the testing batch, two experts were consulted to evaluate and provide feedback on the accuracy of the classification. The experts were contextualized on the purpose of the exercise in order to get a correct assessment on how well the models were classifying the news articles and how can it be improved through clear instructions. Once that their feedback was received, we proceeded to adjust the prompts and repeat the exercise once again. This exercise was repeated four times until reaching a point in which further instructions were reducing the accuracy of the classification due to an increase in the complexity of the prompt.
+
+[^5]: LangChain is an open-source framework that facilitates the integration of generative AI models into your own framework. You can see it as a toolkit that covers and provide easy and fast solutions to many of the usual tasks that programmers face when dealing with language models.
+
+In all rounds of testing, the *GPT-4-Turbo* model exhibited higher accuracy and precision than the *Gemini-1.0-Pro* model. However, both models exhibited a good performance when compared to human classification (see @sec-accuracy). Due to costs restraints for this project, the classification stage for the full sample of news article was performed using only the *Gemini-1.0-Pro* model.[^6]
+
+[^6]: The Gemini model was introduced to the market in December 2023. Sending calls to the model through the Google AI API was free as long as the overall use remained under 60 requests per minute (RPM). This policy was in place until May 2024.
+
+### First stage: Broad classification
+
+For the first stage, we used an 85-word system context that remained fixed in every call made to the LLM, along with a 583-word instruction prompt template.[^7] During this stage, the main objective is to reduce the universe of news articles to be classified. The process was outlined this way to reduce the monetary and computing costs of passing more detailed instructions over the whole universe of news articles.[^8] Therefore, the instructions prompt used in this stage contains very general definitions of our macro-concepts and the main outcome is a binary answer classifying the articles as related or not to our conceptual framework.
+
+[^7]: The final instruction prompt would usually be longer due to the inclusion of the title and full content of the news article.
+
+[^8]: Monetary and computational costs of using Large Language Models are based on token counts. By breaking the process in two stages, we were able to reduce the total token count (instructions-only) to 99 million tokens in comparison to an hypothetical scenario of 2,459 million tokens (instructions-only) if we had passed the detailed instructions to all 808,429 news articles from the beginning.
+
+Out of the 808,429 articles that were passed to the *Gemini-1.0-Pro* model, an average of 27.8% were categorized as related to our definitions of rule of law, justice, and governance. However, this proportion varied significantly, reaching as high as 43.6% in Romania and dropping to just 8% in Ireland (column [2], @tbl-classstage1). However, articles from a newspaper in France, for example, might narrate events occurring in other parts of the world. When focusing only on those articles narrating events that happened within the same country in which the newspaper is based, an average of 18.7% were classified by the model as related to our macro-concepts. Similarly, this proportion can reach as high as 33.7% in Poland and as low as 5.5% in Ireland (column [3], @tbl-classstage1).
+
+During this stage, a small percentage of news articles could not be classified because the prompt sent to the model was blocked by the API. Like other large language models, Gemini employs various techniques to filter and block harmful or inappropriate prompts. These measures are designed to ensure that the model generates safe, helpful, and unbiased content. Even after reducing the security settings to the minimum, some prompts were still blocked due to their content. On average, less than 1% of the total news articles were unable to be classified for this reason (column \[5\], @tbl-classstage1).
+
+A total of 148,124 news articles were passed to the *Gemini-1.0-Pro* model for further classification.
+
+{{< embed notebooks/tables.ipynb#tbl-classstage1 >}}
+
+### Second stage: Pillar classification
+
+For the second stage, we used a fixed 114-word system context in every call to the LLM, along with a 2,928-word instruction prompt template that provided detailed definitions of each pillar. The primary objective during this stage was for the system to classify articles based on which specific pillar of the Rule of Law the events described in the text were related to. However, due to the close relationship and theoretical overlap between the pillars in our conceptual framework, an article could be associated with multiple pillars. As a result, the main output of this stage was a vector of eight binary values, where each value would be set to one if the events in the article were related to a specific pillar, and zero otherwise.
+
+Nevertheless, the overlapping nature of the pillars meant that some events could be strongly or mildly correlated with several pillars. If left unchecked, this overlap could lead to an "*overlabeling*" scenario where articles would be classified as relevant to nearly all dimensions of the rule of law. To mitigate this, the instructions passed to the LLM were designed so the model would focus in providing a ranking score on how strongly a news article is correlated with each pillar on a scale from 0 to 10, with 0 indicating no relevance and 10 indicating a strong correlation. This vector is then transformed into a series of binary values using the following rule:
+
+Let $\mathbf{s} = (s_1, s_2, \dots, s_8)$ represent the score vector for a news article across the eight pillars, where $s_i \in [0, 10]$ represents the score for pillar (i).
+
+The transformation into binary values is defined by a threshold ($T$), such that the binary classification for each pillar is given by:
+
+$$
+b_i =
+\begin{cases}
+1 & \text{if } s_i \geq T \\
+0 & \text{if } s_i < T
+\end{cases}
+$$
+
+where ($b_i$) is the binary value indicating whether the article is related to pillar (i). If ($s_i \geq T$), the article is classified as related to pillar (i) (i.e., ($b_i = 1$)); otherwise, it is unrelated (i.e., ($b_i = 0$)).
+
+@tbl-classstage2 displays the results of the second stage. More specifically, the percentage of news articles associated to each of the eight predefined dimensions of the rule of law. On average, the system found a strong presence of news articles related to *Constraints on Government Powers* (Pillar 1, 20.9%), *Criminal Justice* (Pillar 8, 17.1%), and *Fundamental Rights* (Pillar 4, 16.7%). On the other hand, the system found very few news articles related to *Open Government* (Pillar 3, 2.9%) and *Regulatory Enforcement* (Pillar 6, 3.9%). However, these percentages present substantial variations when considering the associations at the country level.
+
+{{< embed notebooks/tables.ipynb#tbl-classstage2 >}}
+
+Percentages across pillars in @tbl-classstage2 do not sum up to 100 due to three reasons. First, one single article could be associated to multiple pillars. Second, when given more detailed information on the rule of law and its different dimensions, some news articles might have received new scores that would reflect their disassociation from our theoretical framework. Third, some news articles were only mildly related to all of the pillars considered in our conceptual framework.
+
+### How accurate is the text classification? {#sec-accuracy}
+
+## Summarization and Sentiment
+
+## Text Insights
+
+## Next Steps
+
+## Appendix {.appendix}
+
+### List of data sources {#sec-sources .appendix}
+
+::: {.callout-note collapse="true"}
+#### Data sources
+
+```{r}
+newspapers <- readxl::read_xlsx("notebooks/EU_sources_1.xlsx")
+knitr::kable(newspapers)
+```
+:::
+
+### List of keywords used for extraction {#sec-keys .appendix}
+
+::: {.callout-note collapse="true"}
+#### Language-based keywords {.appendix .unnumbered}
+
+```{r}
+langkeys <- readxl::read_xlsx("notebooks/keywords_1.xlsx")
+knitr::kable(langkeys)
+```
+:::
+
+::: {.callout-note collapse="true"}
+#### Country-based keywords {.appendix .unnumbered}
+
+```{r}
+countrykeys <- readxl::read_xlsx("notebooks/country_institutions_1.xlsx")
+knitr::kable(countrykeys)
+```
+:::
