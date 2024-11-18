@@ -49,7 +49,7 @@ Sounds simple, right? Well, I explained it in a way that you don't get scared ab
 
 The [EU Rule of Law Tracker](https://eu-rol-tracker.streamlit.app/) is a very straightforward platform with five base features. First, the **_Media Reports_** is an interactive tab where the user can select a country from a dropdown list and explore a summary of the main issues and events related to each one of the 8 pillars of the Rule of Law.
 
-Given that the information can be overwhelming, the summaries are grouped by topic and associated impact (very positive, positive, neutral, negative, very negative). At the beginning of every country report, you will find information regarding the sources that were used in every country as well as the time period covered. The summaries were produced using AI, after the model was presented with the project's theoretical framework. Therefore, the summaries should be carefully.
+Given that the information can be overwhelming, the summaries are grouped by topic and associated impact (very positive, positive, neutral, negative, very negative). At the beginning of every country report, you will find information regarding the sources that were used in every country as well as the time period covered. The summaries were produced using AI after the model was presented with the project's theoretical framework. Therefore, the summaries should be read carefully.
 
 <img width="100%" height="400" src="media-reports.gif">
 
