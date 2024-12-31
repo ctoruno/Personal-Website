@@ -42,7 +42,7 @@ intro: |
   Assisted the economics department at Central American University (UCA) in Nicaragua by providing lectures and tutorials for undergraduate courses in Regulation and Antitrust Economics and Social Quantitative Techniques.
   </p>
   
-  #### Economic Analyst at National Institute for the Promotion of Economic Competition (Sep. 2015 – Dec. 2018)
+  #### Economic Analyst at National Institute for the Promotion of Economic Competition (Apr. 2014 – June. 2016)
 
   <p style='font-size:16px;'>
   Supported senior officers in the national antitrust authority’s economics department on cases of unfair competition, mergers, and acquisitions. Responsibilities
