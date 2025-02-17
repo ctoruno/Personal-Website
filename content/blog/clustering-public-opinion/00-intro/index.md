@@ -1,6 +1,6 @@
 ---
 author: Carlos A. Toruño P.
-date: "2024-12-21"
+date: "2025-02-16"
 draft: false
 excerpt: First post of 2025. Just a post talking about how this year started and what I will be showing you in the upcoming posts.
 subtitle: ""
