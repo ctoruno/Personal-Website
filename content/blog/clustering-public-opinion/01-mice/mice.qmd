@@ -1,6 +1,11 @@
 ---
 title: "mice"
 format: hugo-md
+project:
+  execute-dir: project
+  render:
+    - mice.qmd
+output-file: index.md
 ---
 
 In [my last post](https://www.carlos-toruno.com/blog/clustering-public-opinion/00-intro/), I talked about a recent exercise that I performed in order to group people into clusters according to their opinions and perceptions regarding the state of the Rule of Law, Justice, and Governance in their countries and/or local regions. Due to the nature of the data, we will have to face the decision of what to do with the missing values that we have in our data set. And that... might not be an easy task.
